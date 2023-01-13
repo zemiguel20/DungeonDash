@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const gravity = 1000
 const jump_impulse = 400
-const for_speed = 100
+var for_speed = 100
 var velocity = Vector2()
 
 var starting_pos = Vector2()
@@ -13,6 +13,11 @@ onready var animated_sprite = $AnimatedSprite
 var in_animation = false
 var frame_count = 0
 
+<<<<<<< HEAD
+=======
+var player_dead = false
+
+>>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 # preloading player action sounds
 var sound_player_attack = preload("res://assets/sounds/player/sword_attack.mp3")
 var sound_player_jump = preload("res://assets/sounds/player/jump.wav")
@@ -20,7 +25,6 @@ var sound_player_jump = preload("res://assets/sounds/player/jump.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	starting_pos = global_position
-
 
 func _process(delta):
 	_set_animation()
@@ -45,15 +49,26 @@ func _process(delta):
 		if collision.collider.name == "Spikes":
 			die()
 			break
-
+	
+	# Reset the player to its starting pos.
+	if !in_animation and player_dead: # makes the animation play out before respawning
+		set_global_position(starting_pos)
+		player_dead = false
+		for_speed = 100
 
 func die():
-	# TODO: play some kind of death animation 
+	# set speed to 0 to stop colliding with the obstacle	
+	for_speed = 0
+	player_dead = true
+	_play_animation("death")
 	
 	# Play the death sound.
 	$DieAudio.play()
+<<<<<<< HEAD
 	# Reset the player to its starting pos.
 	set_global_position(starting_pos)
+=======
+>>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 
 # function that sets a flag and fetches the correct animation
 func _play_animation(animation):
@@ -73,7 +88,11 @@ func _set_animation():
 		_play_animation("slide")
 	elif Input.is_action_pressed("player_shoot") and !in_animation:
 		$PlayerAction.stream = sound_player_attack
+<<<<<<< HEAD
 		_play_animation("shoot")
+=======
+		_play_animation("attack")
+>>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 	else:
 		if frame_count == 0:
 			in_animation = false
