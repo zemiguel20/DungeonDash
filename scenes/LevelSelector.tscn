@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sounds/menu/Click.wav" type="AudioStream" id=1]
+[ext_resource path="res://scripts/LevelSelector.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/menu/Focus.wav" type="AudioStream" id=3]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="LevelSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -22.0
+margin_right = 60.0
+margin_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 20.0
+
+[node name="Level1" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 58.0
+margin_bottom = 20.0
+focus_neighbour_right = NodePath("../Level2")
+focus_neighbour_bottom = NodePath("../../BackButton")
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 62.0
+margin_right = 120.0
+margin_bottom = 20.0
+focus_neighbour_left = NodePath("../Level1")
+focus_neighbour_bottom = NodePath("../../BackButton")
+text = "Level 2"
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 120.0
+margin_bottom = 44.0
+shortcut = SubResource( 2 )
+text = "Back"
+
+[node name="FocusAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SoundEffects"
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SoundEffects"
+
+[node name="Level1Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Level2Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="BackTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_Level_focus_exited" binds= [ 1 ]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/Level2" to="." method="_on_Level_focus_exited" binds= [ 2 ]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/BackButton" to="." method="_on_Level_focus_exited" binds= [ 0 ]]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="timeout" from="Level1Timer" to="." method="_on_Level1Timer_timeout"]
+[connection signal="timeout" from="Level2Timer" to="." method="_on_Level2Timer_timeout"]
+[connection signal="timeout" from="BackTimer" to="." method="_on_Timer_timeout"]

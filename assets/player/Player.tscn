@@ -80,9 +80,11 @@ shape = SubResource( 1 )
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -26.139
+bus = "SoundEffects"
 
 [node name="DieAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "SoundEffects"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 27, 17 )
