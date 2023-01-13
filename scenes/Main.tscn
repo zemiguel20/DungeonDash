@@ -8,6 +8,9 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="ObjectPlacer" parent="." instance=ExtResource( 5 )]
+process_priority = -100
+
 [node name="Guy" parent="." instance=ExtResource( 1 )]
 position = Vector2( -100, 0 )
 
@@ -25,8 +28,6 @@ scale = Vector2( 200, 1 )
 
 [node name="Spikes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 104, -189 )
-
-[node name="ObjectPlacer" parent="." instance=ExtResource( 5 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
