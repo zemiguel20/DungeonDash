@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
+# Export the speed, used in the obstacle placer
+export var for_speed = 300
+
 const gravity = 1000
 const jump_impulse = 400
-const for_speed = 100
 var velocity = Vector2()
 
-var starting_pos = Vector2()
+var starting_pos = Vector2()	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
