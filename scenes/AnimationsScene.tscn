@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://PlayerMovement.gd" type="Script" id=1]
+[ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/run/run04.png" type="Texture" id=2]
 [ext_resource path="res://assets/player/run/run03.png" type="Texture" id=3]
 [ext_resource path="res://assets/player/run/run02.png" type="Texture" id=4]
@@ -72,7 +72,7 @@ script = ExtResource( 1 )
 position = Vector2( 27, 17 )
 frames = SubResource( 1 )
 animation = "death"
-frame = 7
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
