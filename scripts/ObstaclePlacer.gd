@@ -64,6 +64,7 @@ func _ready():
 	
 	# Set next_loc to the first soundcue location
 	next_loc = soundcue_locs[0]
+	$Song.play()
 
 
 func _process(delta):
