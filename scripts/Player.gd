@@ -13,11 +13,8 @@ onready var animated_sprite = $AnimatedSprite
 var in_animation = false
 var frame_count = 0
 
-<<<<<<< HEAD
-=======
 var player_dead = false
 
->>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 # preloading player action sounds
 var sound_player_attack = preload("res://assets/sounds/player/sword_attack.mp3")
 var sound_player_jump = preload("res://assets/sounds/player/jump.wav")
@@ -64,11 +61,8 @@ func die():
 	
 	# Play the death sound.
 	$DieAudio.play()
-<<<<<<< HEAD
 	# Reset the player to its starting pos.
 	set_global_position(starting_pos)
-=======
->>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 
 # function that sets a flag and fetches the correct animation
 func _play_animation(animation):
@@ -88,11 +82,7 @@ func _set_animation():
 		_play_animation("slide")
 	elif Input.is_action_pressed("player_shoot") and !in_animation:
 		$PlayerAction.stream = sound_player_attack
-<<<<<<< HEAD
-		_play_animation("shoot")
-=======
 		_play_animation("attack")
->>>>>>> 9043b01e778239cea44c96dd038afe36912e49ec
 	else:
 		if frame_count == 0:
 			in_animation = false
