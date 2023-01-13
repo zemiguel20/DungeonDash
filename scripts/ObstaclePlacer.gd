@@ -30,9 +30,8 @@ var spikes
 var axe
 var enemy
 
-# Time related vars
-var time_begin
-var time_delay
+# Offset, used to match the sfx with the beat of the song.
+const offset = 0.17
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -65,18 +64,12 @@ func _ready():
 	
 	# Set next_loc to the first soundcue location
 	next_loc = soundcue_locs[0]
-	
-	# Calculate time begin and delays, needed to compensate for audio playing delays.
-	time_begin = OS.get_ticks_usec()
-	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-	$Song.play()
 
 
 func _process(delta):
 	# Compensate for audio playing delays.
-	var time = (OS.get_ticks_usec() - time_begin) / 1000000.0
-	time -= time_delay + 0.1
-	time = max(0, time)
+	var time = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
+	time -= AudioServer.get_output_latency() + offset
 	
 	# Calculate the travelled distance.
 	distance = time * speed
