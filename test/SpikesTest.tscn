@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test/test-tools/dummy-player/DummyPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://spikes/Spikes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://spikes/pressure-plate/PressurePlate.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Spikes" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, 56 )
+
+[node name="PressurePlate" parent="." instance=ExtResource( 4 )]
+position = Vector2( -272, 32 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="DummyPlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( -384, -16 )
+speed = 200
+
+[node name="Block" parent="." instance=ExtResource( 3 )]
+position = Vector2( -8, 64 )
+scale = Vector2( 20, 1 )

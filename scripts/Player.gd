@@ -5,6 +5,8 @@ const jump_impulse = 400
 const for_speed = 100
 var velocity = Vector2()
 
+export var freeze = false
+
 var starting_pos = Vector2()
 
 # Called when the node enters the scene tree for the first time.
@@ -13,13 +15,16 @@ func _ready():
 
 
 func _process(delta):
-	if is_on_floor():
-		velocity.y = 0
-		if Input.is_action_just_pressed("player_jump"):
-			velocity.y -= jump_impulse
-			$JumpAudio.play()
-	else:
-		velocity.y += gravity * delta
+	if not freeze:
+		if is_on_floor():
+			velocity.y = 0
+			if Input.is_action_just_pressed("player_jump"):
+				velocity.y -= jump_impulse
+				$JumpAudio.play()
+		else:
+			velocity.y += gravity * delta
+			
+		velocity.x = for_speed
 		
 	velocity.x = for_speed
 		
