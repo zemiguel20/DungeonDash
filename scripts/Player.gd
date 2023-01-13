@@ -23,6 +23,7 @@ func _process(delta):
 		
 	velocity.x = for_speed
 		
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity, Vector2.UP)
 	
 	# Check for collisions
