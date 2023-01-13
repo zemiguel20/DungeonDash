@@ -94,6 +94,8 @@ func _process(delta):
 		# Lookout for the next soundcue location
 		ctr += 1
 		next_loc = soundcue_locs[ctr]
+		
+	# TODO: reset values if the player dies
 
 
 # Place an obstacle with a given type at a given position.
@@ -119,8 +121,4 @@ func place_obstacle(type, pos):
 			node.set_owner(scene)
 			node.position += Vector2(pos, 60)
 			
-			# TODO: have it move (if some internal script doesn't handle that)
-	
-	
-	
-	
+			# TODO: have it move (if some internal script doesn't handle that)	
