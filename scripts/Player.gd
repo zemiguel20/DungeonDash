@@ -61,8 +61,6 @@ func die():
 	
 	# Play the death sound.
 	$DieAudio.play()
-	# Reset the player to its starting pos.
-	set_global_position(starting_pos)
 
 # function that sets a flag and fetches the correct animation
 func _play_animation(animation):
