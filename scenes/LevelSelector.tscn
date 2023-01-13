@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sounds/menu/Click.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/LevelSelector.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/menu/Focus.wav" type="AudioStream" id=3]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 16777217
@@ -55,6 +56,10 @@ margin_bottom = 44.0
 shortcut = SubResource( 2 )
 text = "Back"
 
+[node name="FocusAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SoundEffects"
+
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 bus = "SoundEffects"
@@ -68,8 +73,11 @@ wait_time = 0.2
 [node name="BackTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_Level_focus_exited" binds= [ 1 ]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/Level2" to="." method="_on_Level_focus_exited" binds= [ 2 ]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/BackButton" to="." method="_on_Level_focus_exited" binds= [ 0 ]]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="timeout" from="Level1Timer" to="." method="_on_Level1Timer_timeout"]
 [connection signal="timeout" from="Level2Timer" to="." method="_on_Level2Timer_timeout"]

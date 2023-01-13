@@ -11,6 +11,7 @@ func _ready():
 	$VBoxContainer/MusicSlider.value = db2linear(AudioServer.get_bus_volume_db(_musicbus))
 	$VBoxContainer/SoundSlider.value = db2linear(AudioServer.get_bus_volume_db(_soundbus))
 
+
 # Volume Sliders
 func _on_GlobalVolumeSlider_value_changed(value: float):
 	$ClickAudio.play()
@@ -26,6 +27,10 @@ func _on_MusicSlider_value_changed(value: float):
 func _on_SoundSlider_value_changed(value: float):
 	$ClickAudio.play()
 	AudioServer.set_bus_volume_db(_soundbus, linear2db(value))
+
+
+func _on_Option_focus_exited():
+	$FocusAudio.play()
 
 
 # Back Button
