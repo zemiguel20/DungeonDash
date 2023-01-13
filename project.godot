@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="SMT_Project"
 run/main_scene="res://scenes/Main.tscn"
-config/icon="res://assets/player/icon.png"
+config/icon="res://icon.png"
 
 [display]
 
@@ -62,4 +62,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://assets/ui/fonts/default_env.tres"
+environment/default_environment="res://default_env.tres"
