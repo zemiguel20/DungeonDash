@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/test-tools/dummy-player/DummyPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/rope-cut/RopeCut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/axe/Axe.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,6 +16,9 @@ current = true
 
 [node name="RopeCut" parent="." instance=ExtResource( 3 )]
 position = Vector2( -144, -48 )
+
+[node name="AxeTrap" parent="." instance=ExtResource( 4 )]
+position = Vector2( 88, -8 )
 
 [node name="DummyPlayer" parent="." instance=ExtResource( 2 )]
 position = Vector2( -288, -24 )
