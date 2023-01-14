@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://spikes/pressure-plate/PressurePlate.gd" type="Script" id=1]
-[ext_resource path="res://spikes/pressure-plate/MinecraftButtonClickSFX.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/pressure-plate/PressurePlate.gd" type="Script" id=1]
+[ext_resource path="res://assets/pressure-plate/pressure_plate_2.wav" type="AudioStream" id=2]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 1 )

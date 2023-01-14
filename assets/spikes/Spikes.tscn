@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://spikes/spikes_5.wav" type="AudioStream" id=1]
-[ext_resource path="res://spikes/Spikes.gd" type="Script" id=2]
-[ext_resource path="res://spikes/Spikes 4.png" type="Texture" id=3]
+[ext_resource path="res://assets/spikes/Spikes.gd" type="Script" id=1]
+[ext_resource path="res://assets/spikes/Spikes 4.png" type="Texture" id=2]
+[ext_resource path="res://assets/spikes/spikes_5.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 60 )
@@ -11,13 +11,13 @@ extents = Vector2( 20, 60 )
 extents = Vector2( 56, 24 )
 
 [node name="SpikesTrap" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "If player (physics layer 1) enters Trigger, spikes sprite will animate going up, inside the DamageArea. If player enters DamageArea, send signal."
 }
 
 [node name="Spikes" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="Trigger" type="Area2D" parent="."]
 collision_layer = 2
@@ -36,7 +36,7 @@ shape = SubResource( 3 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SpikeSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
+stream = ExtResource( 3 )
 bus = "SoundEffects"
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]

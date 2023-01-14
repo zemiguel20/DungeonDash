@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/spikes_5.wav-c645b716612f2605f3cb6fc46ad802ac.sample"
+path="res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample"
 
 [deps]
 
-source_file="res://spikes/spikes_5.wav"
-dest_files=[ "res://.import/spikes_5.wav-c645b716612f2605f3cb6fc46ad802ac.sample" ]
+source_file="res://assets/pressure-plate/pressure_plate_2.wav"
+dest_files=[ "res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample" ]
 
 [params]
 
