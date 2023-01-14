@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
+# Export the speed, used in the obstacle placer
+export var for_speed = 300
+
 const gravity = 1000
 const jump_impulse = 400
-const for_speed = 100
 var velocity = Vector2()
 
 export var freeze = false
@@ -28,6 +30,7 @@ func _process(delta):
 		
 	velocity.x = for_speed
 		
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity, Vector2.UP)
 	
 	# Check for collisions

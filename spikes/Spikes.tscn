@@ -37,6 +37,7 @@ shape = SubResource( 3 )
 
 [node name="SpikeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "SoundEffects"
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
