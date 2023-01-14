@@ -13,6 +13,7 @@ onready var animated_sprite = $AnimatedSprite
 var in_animation = false
 var frame_count = 0
 
+var timer = Timer.new()
 var player_dead = false
 
 # preloading player action sounds
@@ -47,12 +48,6 @@ func _process(delta):
 		if collision.collider.name == "Spikes":
 			die()
 			break
-	
-	# Reset the player to its starting pos.
-	if !in_animation and player_dead: # makes the animation play out before respawning
-		set_global_position(starting_pos)
-		player_dead = false
-		for_speed = 100
 
 func die():
 	# set speed to 0 to stop colliding with the obstacle	
@@ -62,6 +57,17 @@ func die():
 	
 	# Play the death sound.
 	$DieAudio.play()
+	
+	add_child(timer)
+	timer.wait_time = 3 # sets how long player stays dead on ground before respawn
+	timer.connect("timeout", self ,"respawn")
+	timer.start()
+
+func respawn():
+	set_global_position(starting_pos)
+	player_dead = false
+	for_speed = 100
+	timer.stop()
 
 # function that sets a flag and fetches the correct animation
 func _play_animation(animation):
@@ -85,7 +91,9 @@ func _set_animation():
 	else:
 		if frame_count == 0:
 			in_animation = false
-		if !in_animation:
+		if frame_count == 0 and player_dead:
+			animated_sprite.play("dead")
+		if !in_animation and !player_dead:
 			animated_sprite.play("run")
 			
 	frame_count -= 1

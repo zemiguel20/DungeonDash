@@ -50,6 +50,11 @@ animations = [ {
 "name": "attack",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 13 ), ExtResource( 18 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "death",
@@ -91,8 +96,7 @@ bus = "SoundEffects"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 27, 17 )
 frames = SubResource( 19 )
-animation = "attack"
-frame = 3
+animation = "dead"
 playing = true
 
 [node name="PlayerAction" type="AudioStreamPlayer2D" parent="."]
