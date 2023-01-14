@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
+# Export the speed, used in the obstacle placer
+export var for_speed = 300
+
 const gravity = 1000
 const jump_impulse = 400
-var for_speed = 100
 var velocity = Vector2()
 
-var starting_pos = Vector2()
+var starting_pos = Vector2()	
 
 onready var animated_sprite = $AnimatedSprite
 
@@ -66,7 +68,7 @@ func die():
 func respawn():
 	set_global_position(starting_pos)
 	player_dead = false
-	for_speed = 100
+	for_speed = 300
 	timer.stop()
 
 # function that sets a flag and fetches the correct animation

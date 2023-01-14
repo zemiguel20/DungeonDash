@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EnV - Paladin.mp3-5c76c69703fcc9947bd53af4b7c8fa2b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/EnV - Paladin.mp3"
+dest_files=[ "res://.import/EnV - Paladin.mp3-5c76c69703fcc9947bd53af4b7c8fa2b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
