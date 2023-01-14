@@ -7,7 +7,9 @@ const gravity = 1000
 const jump_impulse = 400
 var velocity = Vector2()
 
-var starting_pos = Vector2()	
+export var freeze = false
+
+var starting_pos = Vector2()
 
 onready var animated_sprite = $AnimatedSprite
 
@@ -36,6 +38,17 @@ func _process(delta):
 			$JumpAudio.play()
 	else:
 		velocity.y += gravity * delta
+
+	if not freeze:
+		if is_on_floor():
+			velocity.y = 0
+			if Input.is_action_just_pressed("player_jump"):
+				velocity.y -= jump_impulse
+				$JumpAudio.play()
+		else:
+			velocity.y += gravity * delta
+			
+		velocity.x = for_speed
 		
 	velocity.x = for_speed
 		
@@ -51,7 +64,7 @@ func _process(delta):
 			die()
 			break
 
-func die():
+func die(): # NEEDS TO BE TRIGGERED ON COLLISION WITH OBSTACLE
 	# set speed to 0 to stop colliding with the obstacle	
 	for_speed = 0
 	player_dead = true

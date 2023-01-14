@@ -39,9 +39,9 @@ func _ready():
 	scene = get_tree().get_current_scene()
 	
 	# Load the three types of obstacles. TODO: fix paths
-	spikes = load("res://assets/objects/Spikes.tscn")
-	axe = load("res://assets/objects/Spikes.tscn")
-	enemy = load("res://assets/objects/Spikes.tscn")
+	spikes = load("res://assets/spikes/Spikes.tscn")
+	axe = load("res://assets/spikes/Spikes.tscn")
+	enemy = load("res://assets/spikes/Spikes.tscn")
 	
 	# Initialize player-dependent variables.
 	player = get_node("/root/Node2D/Guy")
