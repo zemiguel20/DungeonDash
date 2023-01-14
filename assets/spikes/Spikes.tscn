@@ -20,10 +20,10 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="Trigger" type="Area2D" parent="."]
+position = Vector2( -84, -84 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-position = Vector2( -84, -84 )
 shape = SubResource( 4 )
 
 [node name="DamageArea" type="Area2D" parent="."]

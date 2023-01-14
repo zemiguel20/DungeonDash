@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/axe_wave.wav-f2f54d679f54bf46fe456caf81dfb605.sample"
+
+[deps]
+
+source_file="res://assets/axe/axe_wave.wav"
+dest_files=[ "res://.import/axe_wave.wav-f2f54d679f54bf46fe456caf81dfb605.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

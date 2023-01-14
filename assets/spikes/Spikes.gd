@@ -2,7 +2,7 @@ extends Node2D
 
 signal spikes_hit
 
-func _on_Trigger_body_entered(body: PhysicsBody2D):
+func _on_Trigger_body_entered(_body):
 	print("Player entered trigger")
 	# Spikes up Tween spikes offset
 	$Tween.interpolate_property(
@@ -18,6 +18,6 @@ func _on_Trigger_body_entered(body: PhysicsBody2D):
 	$SpikeSFX.play()
 
 
-func _on_DamageArea_body_entered(body):
+func _on_DamageArea_body_entered(_body):
 	print("Player hit spikes")
 	emit_signal("spikes_hit")
