@@ -100,3 +100,4 @@ animation = "dead"
 playing = true
 
 [node name="PlayerAction" type="AudioStreamPlayer2D" parent="."]
+bus = "SoundEffects"
