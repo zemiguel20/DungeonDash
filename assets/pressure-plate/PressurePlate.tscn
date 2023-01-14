@@ -32,6 +32,9 @@ shape = SubResource( 3 )
 [node name="ClickSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "SoundEffects"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]
 [connection signal="body_exited" from="Trigger" to="." method="_on_Trigger_body_exited"]
