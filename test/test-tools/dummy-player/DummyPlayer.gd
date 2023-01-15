@@ -14,10 +14,10 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_physical_key_pressed(KEY_W):
-		move_and_collide(Vector2(0, -speed*delta))
+		var _collision = move_and_collide(Vector2(0, -speed*delta))
 	if Input.is_physical_key_pressed(KEY_S):
-		move_and_collide(Vector2(0, speed*delta))
+		var _collision = move_and_collide(Vector2(0, speed*delta))
 	if Input.is_physical_key_pressed(KEY_A):
-		move_and_collide(Vector2(-speed*delta, 0))
+		var _collision = move_and_collide(Vector2(-speed*delta, 0))
 	if Input.is_physical_key_pressed(KEY_D):
-		move_and_collide(Vector2(speed*delta, 0))
+		var _collision = move_and_collide(Vector2(speed*delta, 0))
