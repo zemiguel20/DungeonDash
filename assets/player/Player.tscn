@@ -1,47 +1,39 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://assets/player/run/run02.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/animations/run/run02.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/Mario Jump - Gaming Sound Effect (HD).wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/sounds/vine-boom.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/player/die/die07.png" type="Texture" id=5]
-[ext_resource path="res://assets/player/run/run04.png" type="Texture" id=6]
-[ext_resource path="res://assets/player/run/run03.png" type="Texture" id=7]
-[ext_resource path="res://assets/player/run/run01.png" type="Texture" id=8]
-[ext_resource path="res://assets/player/jump/jump03.png" type="Texture" id=9]
-[ext_resource path="res://assets/player/attack/attack03.png" type="Texture" id=10]
-[ext_resource path="res://assets/player/attack/attack01.png" type="Texture" id=11]
-[ext_resource path="res://assets/player/attack/attack02.png" type="Texture" id=12]
-[ext_resource path="res://assets/player/die/die05.png" type="Texture" id=13]
-[ext_resource path="res://assets/player/attack/attack04.png" type="Texture" id=14]
-[ext_resource path="res://assets/player/die/die09.png" type="Texture" id=15]
-[ext_resource path="res://assets/player/die/die08.png" type="Texture" id=16]
-[ext_resource path="res://assets/player/die/die10.png" type="Texture" id=17]
-[ext_resource path="res://assets/player/die/die06.png" type="Texture" id=18]
-[ext_resource path="res://assets/player/die/die01.png" type="Texture" id=19]
-[ext_resource path="res://assets/player/die/die02.png" type="Texture" id=20]
-[ext_resource path="res://assets/player/die/die03.png" type="Texture" id=21]
-[ext_resource path="res://assets/player/attack/attack05.png" type="Texture" id=22]
-[ext_resource path="res://assets/player/die/die04.png" type="Texture" id=23]
-[ext_resource path="res://assets/player/attack/attack06.png" type="Texture" id=24]
-[ext_resource path="res://assets/player/attack/attack00.png" type="Texture" id=25]
-[ext_resource path="res://assets/player/jump/jump00.png" type="Texture" id=26]
-[ext_resource path="res://assets/player/jump/jump01.png" type="Texture" id=27]
-[ext_resource path="res://assets/player/jump/jump02.png" type="Texture" id=28]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 19.0
-height = 58.0
-
-[sub_resource type="StreamTexture" id=14]
-
-[sub_resource type="StreamTexture" id=15]
-
-[sub_resource type="StreamTexture" id=16]
-
-[sub_resource type="StreamTexture" id=17]
-
-[sub_resource type="StreamTexture" id=18]
+[ext_resource path="res://assets/player/sounds/jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/player/sounds/vine-boom.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/player/animations/die/die07.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/animations/run/run04.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/animations/run/run03.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/animations/run/run01.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/animations/jump/jump03.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/animations/attack/attack03.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/animations/attack/attack01.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/animations/attack/attack02.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/animations/die/die05.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/animations/attack/attack04.png" type="Texture" id=14]
+[ext_resource path="res://assets/player/animations/die/die09.png" type="Texture" id=15]
+[ext_resource path="res://assets/player/animations/die/die08.png" type="Texture" id=16]
+[ext_resource path="res://assets/player/animations/die/die10.png" type="Texture" id=17]
+[ext_resource path="res://assets/player/animations/die/die06.png" type="Texture" id=18]
+[ext_resource path="res://assets/player/animations/die/die01.png" type="Texture" id=19]
+[ext_resource path="res://assets/player/animations/die/die02.png" type="Texture" id=20]
+[ext_resource path="res://assets/player/animations/die/die03.png" type="Texture" id=21]
+[ext_resource path="res://assets/player/animations/attack/attack05.png" type="Texture" id=22]
+[ext_resource path="res://assets/player/animations/die/die04.png" type="Texture" id=23]
+[ext_resource path="res://assets/player/animations/attack/attack06.png" type="Texture" id=24]
+[ext_resource path="res://assets/player/animations/attack/attack00.png" type="Texture" id=25]
+[ext_resource path="res://assets/player/animations/jump/jump00.png" type="Texture" id=26]
+[ext_resource path="res://assets/player/animations/jump/jump01.png" type="Texture" id=27]
+[ext_resource path="res://assets/player/animations/jump/jump02.png" type="Texture" id=28]
+[ext_resource path="res://assets/player/sounds/sword_attack.mp3" type="AudioStream" id=29]
+[ext_resource path="res://assets/player/sounds/slide.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/player/animations/slide/slide02.png" type="Texture" id=31]
+[ext_resource path="res://assets/player/animations/slide/slide01.png" type="Texture" id=32]
+[ext_resource path="res://assets/player/animations/slide/slide03.png" type="Texture" id=33]
+[ext_resource path="res://assets/player/animations/slide/slide04.png" type="Texture" id=34]
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
@@ -61,7 +53,7 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 9 ) ],
-"loop": true,
+"loop": false,
 "name": "jump",
 "speed": 10.0
 }, {
@@ -70,34 +62,53 @@ animations = [ {
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "slide",
-"speed": 30.0
+"speed": 10.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 11.0
+height = 83.0
+
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 16.5
+height = 23.0
+
 [node name="Guy" type="KinematicBody2D"]
+collision_mask = 7
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 30, 17 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 19 )
+animation = "slide"
+frame = 2
+playing = true
+
+[node name="NormalCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 7, 0 )
 scale = Vector2( 2, 0.75 )
 shape = SubResource( 1 )
 
-[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+[node name="SlideCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 7, 16 )
+scale = Vector2( 2, 0.75 )
+shape = SubResource( 20 )
+disabled = true
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -26.139
 bus = "SoundEffects"
 
-[node name="DieAudio" type="AudioStreamPlayer" parent="."]
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 bus = "SoundEffects"
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 27, 17 )
-frames = SubResource( 19 )
-animation = "dead"
-playing = true
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+bus = "SoundEffects"
 
-[node name="PlayerAction" type="AudioStreamPlayer2D" parent="."]
+[node name="SlideSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
 bus = "SoundEffects"
