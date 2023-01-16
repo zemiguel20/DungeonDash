@@ -100,7 +100,7 @@ func _exit_current_state():
 			$SlideSFX.stop()
 		State.ATTACK:
 			$AnimatedSprite.disconnect("animation_finished", self, "_on_attack_anim_finished")
-			$AttackHitbox/Hitbox.disabled = true
+			$AttackHitbox/Hitbox.set_deferred("disabled", true)
 		State.DEAD:
 			pass
 
