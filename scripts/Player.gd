@@ -17,6 +17,9 @@ export var gravity = 1000
 export var jump_speed = 400
 var velocity = Vector2()
 
+func _ready():
+	velocity.x = for_speed
+
 func _physics_process(delta):
 	match current_state:
 		State.RUN:
@@ -43,10 +46,12 @@ func _physics_process(delta):
 		State.ATTACK:
 			_move()
 		State.DEAD:
-			pass
+			# move player to the floor using gravity if dead midair
+			if not is_on_floor():
+				velocity.y += gravity * delta
+				_move()
 
 func _move():
-	velocity.x = for_speed
 	var _final_velocity = move_and_slide(velocity, Vector2.UP)
 
 func _set_state(new_state):
@@ -74,7 +79,9 @@ func _set_state(new_state):
 			$AnimatedSprite.play("attack")
 			$AttackSFX.play()
 		State.DEAD:
-			pass
+			velocity = Vector2() # stop movement
+			$AnimatedSprite.play("death")
+			$DeathSFX.play()
 
 	current_state = new_state
 
@@ -98,5 +105,5 @@ func _exit_current_state():
 func _on_attack_anim_finished():
 	_set_state(State.RUN)
 
-func die():
+func _die():
 	_set_state(State.DEAD)

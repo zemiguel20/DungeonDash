@@ -35,3 +35,6 @@ position = Vector2( 679, 119 )
 
 [node name="PressurePlate" parent="." instance=ExtResource( 4 )]
 position = Vector2( 322, 96 )
+
+[connection signal="axe_hit" from="AxeTrap" to="Guy" method="_die"]
+[connection signal="spikes_hit" from="SpikesTrap" to="Guy" method="_die"]
