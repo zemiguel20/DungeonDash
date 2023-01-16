@@ -37,7 +37,10 @@ func _on_Option_focus_exited():
 func _on_BackButton_pressed():
 	$ClickAudio.play()
 	$Timer.start()
+	$BackButton.release_focus()
+	$BackButton/Label.margin_top += 2
 
 # Delayed call from on_BackButton_pressed()
 func _on_Timer_timeout():
+	$BackButton.pressed = false
 	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")
