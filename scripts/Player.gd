@@ -78,6 +78,7 @@ func _set_state(new_state):
 			var _error = $AnimatedSprite.connect("animation_finished", self, "_on_attack_anim_finished")
 			$AnimatedSprite.play("attack")
 			$AttackSFX.play()
+			$AttackHitbox/Hitbox.disabled = false
 		State.DEAD:
 			velocity = Vector2() # stop movement
 			$AnimatedSprite.play("death")
@@ -99,6 +100,7 @@ func _exit_current_state():
 			$SlideSFX.stop()
 		State.ATTACK:
 			$AnimatedSprite.disconnect("animation_finished", self, "_on_attack_anim_finished")
+			$AttackHitbox/Hitbox.disabled = true
 		State.DEAD:
 			pass
 
@@ -107,3 +109,9 @@ func _on_attack_anim_finished():
 
 func _die():
 	_set_state(State.DEAD)
+
+
+func _on_AttackHitbox_body_entered(body):
+	print("hit")
+	if body.has_method("take_damage"):
+		body.take_damage()

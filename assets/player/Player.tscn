@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/player/animations/run/run02.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -71,13 +71,16 @@ height = 83.0
 radius = 16.5
 height = 23.0
 
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 36, 20 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 19 )
-animation = "slide"
+animation = "attack"
 playing = true
 
 [node name="NormalCollisionShape" type="CollisionShape2D" parent="."]
@@ -86,7 +89,7 @@ scale = Vector2( 2, 0.75 )
 shape = SubResource( 1 )
 
 [node name="SlideCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( 7, 16 )
+position = Vector2( -8, 16 )
 scale = Vector2( 2, 0.75 )
 shape = SubResource( 20 )
 disabled = true
@@ -106,3 +109,13 @@ bus = "SoundEffects"
 [node name="SlideSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 30 )
 bus = "SoundEffects"
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+position = Vector2( 88, 8 )
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource( 21 )
+disabled = true
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_AttackHitbox_body_entered"]
