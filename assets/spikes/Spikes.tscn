@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/spikes/spikes_5.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 64, 24 )
+extents = Vector2( 56, 24 )
 
 [node name="Spikes" type="Area2D"]
 collision_layer = 2
