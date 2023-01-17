@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample"
+path="res://.import/pressure_plate_2.wav-575a1bb7e839190788317056160c0be9.sample"
 
 [deps]
 
-source_file="res://assets/pressure-plate/pressure_plate_2.wav"
-dest_files=[ "res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample" ]
+source_file="res://assets/sounds/pressure_plate_2.wav"
+dest_files=[ "res://.import/pressure_plate_2.wav-575a1bb7e839190788317056160c0be9.sample" ]
 
 [params]
 
