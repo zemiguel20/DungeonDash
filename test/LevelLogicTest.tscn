@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/spikes/Spikes.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LevelLogic.gd" type="Script" id=4]
 [ext_resource path="res://assets/axe/Axe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://test/test-tools/TestInGameMenu.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -35,7 +38,20 @@ position = Vector2( 304, 40 )
 one_shot = true
 autostart = true
 
+[node name="FinishLine" type="Area2D" parent="."]
+position = Vector2( 968, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
+shape = SubResource( 1 )
+
+[node name="Menu" parent="." instance=ExtResource( 6 )]
+
+[connection signal="level_finished" from="." to="Menu" method="enable"]
+[connection signal="player_died" from="." to="Menu" method="enable"]
 [connection signal="body_entered" from="Axe" to="." method="_player_hit"]
 [connection signal="timeout" from="Axe/Timer" to="Axe" method="activate"]
 [connection signal="body_entered" from="Spikes" to="." method="_player_hit"]
 [connection signal="timeout" from="Spikes/Timer" to="Spikes" method="activate"]
+[connection signal="body_entered" from="FinishLine" to="." method="_finish_line_reached"]
+[connection signal="quit_pressed" from="Menu" to="." method="quit"]
+[connection signal="restart_pressed" from="Menu" to="." method="restart"]
