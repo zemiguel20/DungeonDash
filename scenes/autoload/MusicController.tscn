@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/music/background_menu_1.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/MusicController.gd" type="Script" id=2]
+[ext_resource path="res://scenes/autoload/MenuAnimation.ogv" type="VideoStream" id=3]
+[ext_resource path="res://scenes/autoload/MenuStatic.png" type="Texture" id=4]
 
 [node name="MusicController" type="Node"]
 script = ExtResource( 2 )
 
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+stream = ExtResource( 3 )
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 bus = "Music"
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

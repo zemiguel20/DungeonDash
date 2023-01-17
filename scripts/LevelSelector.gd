@@ -2,12 +2,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VBoxContainer/HBoxContainer/Level1.grab_focus()
+	$Level1.grab_focus()
 
 
 func _on_Level1_pressed():
 	$ClickAudio.play()
 	$Level1Timer.start()
+	MusicController.stop_music()
 
 # Delayed call from on_Level1_pressed()
 func _on_Level1Timer_timeout():
@@ -27,15 +28,27 @@ func _on_Level2Timer_timeout():
 func _on_BackButton_pressed():
 	$ClickAudio.play()
 	$BackTimer.start()
+	$BackButton.release_focus()
+	$BackButton/Label.margin_top += 2
 
 # Delayed call from on_BackButton_pressed()
 func _on_Timer_timeout():
+	$BackButton.pressed = false
 	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")
 
 
 func _on_Level_focus_exited(prev : int):
 	$FocusAudio.play()
 	if (prev == 1):
-		$VBoxContainer/BackButton.focus_neighbour_top = $VBoxContainer/HBoxContainer/Level1.get_path()
+		$BackButton.focus_neighbour_top = $Level1.get_path()
 	elif (prev == 2):
-		$VBoxContainer/BackButton.focus_neighbour_top = $VBoxContainer/HBoxContainer/Level2.get_path()
+		$BackButton.focus_neighbour_top = $Level2.get_path()
+
+
+func _on_mouse_entered(curr : int):
+	if (curr == 1):
+		$Level1.grab_focus()
+	elif (curr == 2):
+		$Level2.grab_focus()
+	elif (curr == 0):
+		$BackButton.grab_focus()
