@@ -107,11 +107,10 @@ func _exit_current_state():
 func _on_attack_anim_finished():
 	_set_state(State.RUN)
 
-func _die():
-	_set_state(State.DEAD)
-
-
 func _on_AttackHitbox_body_entered(body):
 	print("hit")
 	if body.has_method("take_damage"):
 		body.take_damage()
+
+func die():
+	_set_state(State.DEAD)
