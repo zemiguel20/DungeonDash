@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/spikes/Spikes.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LevelLogic.gd" type="Script" id=4]
+[ext_resource path="res://assets/axe/Axe.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -19,6 +20,14 @@ current = true
 position = Vector2( 0, 96 )
 scale = Vector2( 100, 1 )
 
+[node name="Axe" parent="." instance=ExtResource( 5 )]
+position = Vector2( 704, -8 )
+
+[node name="Timer" type="Timer" parent="Axe"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [node name="Spikes" parent="." instance=ExtResource( 3 )]
 position = Vector2( 304, 40 )
 
@@ -26,5 +35,7 @@ position = Vector2( 304, 40 )
 one_shot = true
 autostart = true
 
+[connection signal="body_entered" from="Axe" to="." method="_player_hit"]
+[connection signal="timeout" from="Axe/Timer" to="Axe" method="activate"]
 [connection signal="body_entered" from="Spikes" to="." method="_player_hit"]
 [connection signal="timeout" from="Spikes/Timer" to="Spikes" method="activate"]
