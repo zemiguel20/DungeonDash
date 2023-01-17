@@ -27,3 +27,10 @@ func _on_ReturnButton_pressed():
 
 func _on_Button_focus_exited():
 	$FocusAudio.play()
+
+
+func _on_mouse_entered(curr : int):
+	if (curr == 1):
+		$ReturnButton.grab_focus()
+	elif (curr == 2):
+		$MenuButton.grab_focus()

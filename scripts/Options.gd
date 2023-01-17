@@ -44,3 +44,14 @@ func _on_BackButton_pressed():
 func _on_Timer_timeout():
 	$BackButton.pressed = false
 	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_mouse_entered(curr : int):
+	if (curr == 1):
+		$VBoxContainer/GlobalVolumeSlider.grab_focus()
+	elif (curr == 2):
+		$VBoxContainer/MusicSlider.grab_focus()
+	elif (curr == 3):
+		$VBoxContainer/SoundSlider.grab_focus()
+	elif (curr == 0):
+		$BackButton.grab_focus()

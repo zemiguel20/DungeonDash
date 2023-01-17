@@ -43,3 +43,12 @@ func _on_Level_focus_exited(prev : int):
 		$BackButton.focus_neighbour_top = $Level1.get_path()
 	elif (prev == 2):
 		$BackButton.focus_neighbour_top = $Level2.get_path()
+
+
+func _on_mouse_entered(curr : int):
+	if (curr == 1):
+		$Level1.grab_focus()
+	elif (curr == 2):
+		$Level2.grab_focus()
+	elif (curr == 0):
+		$BackButton.grab_focus()

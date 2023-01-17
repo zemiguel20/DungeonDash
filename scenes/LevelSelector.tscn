@@ -111,10 +111,13 @@ wait_time = 0.2
 wait_time = 0.1
 
 [connection signal="focus_exited" from="Level1" to="." method="_on_Level_focus_exited" binds= [ 1 ]]
+[connection signal="mouse_entered" from="Level1" to="." method="_on_mouse_entered" binds= [ 1 ]]
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 [connection signal="focus_exited" from="Level2" to="." method="_on_Level_focus_exited" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Level2" to="." method="_on_mouse_entered" binds= [ 2 ]]
 [connection signal="pressed" from="Level2" to="." method="_on_Level2_pressed"]
 [connection signal="focus_exited" from="BackButton" to="." method="_on_Level_focus_exited" binds= [ 0 ]]
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_mouse_entered" binds= [ 0 ]]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="timeout" from="Level1Timer" to="." method="_on_Level1Timer_timeout"]
 [connection signal="timeout" from="Level2Timer" to="." method="_on_Level2Timer_timeout"]

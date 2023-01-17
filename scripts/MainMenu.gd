@@ -42,3 +42,12 @@ func _on_QuitTimer_timeout():
 
 func _on_Button_focus_exited():
 	$FocusAudio.play()
+
+
+func _on_mouse_entered(curr : int):
+	if (curr == 1):
+		$StartButton.grab_focus()
+	elif (curr == 2):
+		$OptionsButton.grab_focus()
+	elif (curr == 3):
+		$QuitButton.grab_focus()

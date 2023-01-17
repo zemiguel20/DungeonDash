@@ -131,10 +131,13 @@ wait_time = 0.2
 wait_time = 0.1
 
 [connection signal="focus_exited" from="StartButton" to="." method="_on_Button_focus_exited"]
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_mouse_entered" binds= [ 1 ]]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="focus_exited" from="OptionsButton" to="." method="_on_Button_focus_exited"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_mouse_entered" binds= [ 2 ]]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="focus_exited" from="QuitButton" to="." method="_on_Button_focus_exited"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_mouse_entered" binds= [ 3 ]]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="timeout" from="QuitTimer" to="." method="_on_QuitTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
