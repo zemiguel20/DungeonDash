@@ -1,6 +1,6 @@
 extends Node2D
 
-# Level vars
+# Level vars.
 var player
 var speed
 var total_distance
@@ -10,19 +10,22 @@ var distance = 0
 var time_elapsed = 0
 var potential_locs = []
 
-# Music vars
+# Music vars.
 const bpm = 130
 const time_sig = 4
 
-# Soundcue vars
+# Soundcue vars.
 const timing = 2
 var soundcue_locs = []
 var soundcue_types = [] # 0 = click, 1 = cut, 2 = grunt
-var next_loc
 var ctr = 0
 
-# List of obstacle locations
+# List of obstacle locations and the obstacles themselves
 var obstacle_locs = []
+var obstacles = []
+
+# Indicates that an obstacle is coming up after a sound cue.
+var obs_soon = false
 
 # Scene and various obstacles that can be placed.
 var scene
@@ -40,7 +43,7 @@ func _ready():
 	
 	# Load the three types of obstacles. TODO: fix paths
 	spikes = load("res://assets/spikes/Spikes.tscn")
-	axe = load("res://assets/spikes/Spikes.tscn")
+	axe = load("res://assets/axe/Axe.tscn")
 	enemy = load("res://assets/spikes/Spikes.tscn")
 	
 	# Initialize player-dependent variables.
@@ -53,17 +56,22 @@ func _ready():
 	for i in range(bpm + 1):
 		potential_locs.append(i * inv_total_distance)
 	
-	# Choose some spots for sound cues.
+	var type = 0
+	
+	# Choose some spots for sound cues. TODO: these are just for testing
 	for j in range(2, 120, 4):
 		if j + timing < len(potential_locs):
 			soundcue_locs.append(potential_locs[j])
-			soundcue_types.append(0)
+			soundcue_types.append(type)
 			obstacle_locs.append(potential_locs[j + timing])
 			
-			place_obstacle(0, potential_locs[j + timing])
+			place_obstacle(type, potential_locs[j + timing])
+			
+			if type == 0:
+				type = 1
+			else:
+				type = 0
 	
-	# Set next_loc to the first soundcue location
-	next_loc = soundcue_locs[0]
 	$Song.play()
 
 
@@ -76,7 +84,7 @@ func _process(delta):
 	distance = time * speed
 	
 	# Play the correct sound if the player has reached a soundcue location.
-	if distance > next_loc && ctr < len(soundcue_locs) - 1:
+	if !obs_soon && distance > soundcue_locs[ctr] && ctr < len(soundcue_locs) - 1:
 		match (soundcue_types[ctr]):
 			0:
 				$SoundCueClick.play()
@@ -84,11 +92,18 @@ func _process(delta):
 				$SoundCueCut.play()
 			2:
 				$SoundCueGrunt.play()
-
-		# Lookout for the next soundcue location
-		ctr += 1
-		next_loc = soundcue_locs[ctr]
 		
+		# An obstacle is coming up.
+		obs_soon = true
+	
+	elif obs_soon && distance > obstacle_locs[ctr] &&  ctr < len(obstacle_locs) - 1:
+		# Play animation.
+		obstacles[ctr].activate()
+		
+		# Lookout for the next soundcue location.
+		obs_soon = false
+		ctr += 1
+	
 	# TODO: reset values if the player dies
 
 
@@ -103,16 +118,16 @@ func place_obstacle(type, pos):
 			node = spikes.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos, 60)
+			node.position += Vector2(pos + 110, 60)
 		1:
 			node = axe.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos, 60)
+			node.position += Vector2(pos + 50, 30)
 		2:
 			node = enemy.instance()
 			add_child(node)
 			node.set_owner(scene)
 			node.position += Vector2(pos, 60)
 			
-			# TODO: have it move (if some internal script doesn't handle that)	
+	obstacles.append(node)
