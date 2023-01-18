@@ -13,8 +13,8 @@ enum State {
 
 var current_state
 
-export var gravity = 1000
-export var jump_speed = 400
+export var gravity = 10
+export var jump_speed = 300
 var velocity = Vector2()
 
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 	current_state = State.JUMP
 	$AnimatedSprite.play("jump")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		State.RUN:
 			# Check player action
@@ -38,7 +38,7 @@ func _physics_process(delta):
 			if is_on_floor():
 				_set_state(State.RUN)
 			else:
-				velocity.y += gravity * delta
+				velocity.y += gravity
 			_move()
 		State.SLIDE:
 			# keep sliding while action is pressed
@@ -50,7 +50,7 @@ func _physics_process(delta):
 		State.DEAD:
 			# move player to the floor using gravity if dead midair
 			if not is_on_floor():
-				velocity.y += gravity * delta
+				velocity.y += gravity
 			_move()
 
 func _move():

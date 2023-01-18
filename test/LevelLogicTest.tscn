@@ -36,9 +36,12 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -424, 24 )
+collision_mask = 15
+collision/safe_margin = 1.0
+gravity = 10
+jump_speed = 300
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 424, -24 )
+[node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
 [node name="Block" parent="." instance=ExtResource( 1 )]
@@ -47,6 +50,8 @@ scale = Vector2( 100, 1 )
 
 [node name="FinishLine" type="KinematicBody2D" parent="."]
 position = Vector2( 968, 32 )
+collision_layer = 8
+collision_mask = 0
 script = ExtResource( 7 )
 constant_linear_velocity = Vector2( -300, 0 )
 
