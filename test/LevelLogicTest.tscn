@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://LevelLogic.gd" type="Script" id=4]
 [ext_resource path="res://assets/axe/Axe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://test/test-tools/TestInGameMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/obstacles/MovingObstacle.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,35 +24,39 @@ current = true
 position = Vector2( 0, 96 )
 scale = Vector2( 100, 1 )
 
-[node name="Axe" parent="." instance=ExtResource( 5 )]
-position = Vector2( 704, -8 )
-
-[node name="Timer" type="Timer" parent="Axe"]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[node name="Spikes" parent="." instance=ExtResource( 3 )]
-position = Vector2( 304, 40 )
-
-[node name="Timer" type="Timer" parent="Spikes"]
-one_shot = true
-autostart = true
-
-[node name="FinishLine" type="Area2D" parent="."]
+[node name="FinishLine" type="KinematicBody2D" parent="."]
 position = Vector2( 968, 32 )
+script = ExtResource( 7 )
+constant_linear_velocity = Vector2( -300, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
 shape = SubResource( 1 )
 
 [node name="Menu" parent="." instance=ExtResource( 6 )]
 
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Axe" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 704, -8 )
+constant_linear_velocity = Vector2( -300, 0 )
+
+[node name="Timer" type="Timer" parent="Obstacles/Axe"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Spikes" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 304, 40 )
+constant_linear_velocity = Vector2( -300, 0 )
+
+[node name="Timer" type="Timer" parent="Obstacles/Spikes"]
+one_shot = true
+autostart = true
+
 [connection signal="level_finished" from="." to="Menu" method="enable"]
 [connection signal="player_died" from="." to="Menu" method="enable"]
-[connection signal="body_entered" from="Axe" to="." method="_player_hit"]
-[connection signal="timeout" from="Axe/Timer" to="Axe" method="activate"]
-[connection signal="body_entered" from="Spikes" to="." method="_player_hit"]
-[connection signal="timeout" from="Spikes/Timer" to="Spikes" method="activate"]
-[connection signal="body_entered" from="FinishLine" to="." method="_finish_line_reached"]
+[connection signal="player_collided" from="Player" to="." method="_on_player_collision"]
 [connection signal="quit_pressed" from="Menu" to="." method="quit"]
 [connection signal="restart_pressed" from="Menu" to="." method="restart"]
+[connection signal="timeout" from="Obstacles/Axe/Timer" to="Obstacles/Axe" method="activate"]
+[connection signal="timeout" from="Obstacles/Spikes/Timer" to="Obstacles/Spikes" method="activate"]

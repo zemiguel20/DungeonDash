@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_collided(other_body)
+
 enum State {
 	RUN,
 	JUMP,
@@ -52,7 +54,13 @@ func _physics_process(delta):
 				_move()
 
 func _move():
+	# TODO: clean movement code
+	velocity.x = 0
 	var _final_velocity = move_and_slide(velocity, Vector2.UP)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		emit_signal("player_collided", collision.collider)
+
 
 func _set_state(new_state):
 	# state cleanup

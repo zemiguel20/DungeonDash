@@ -1,4 +1,4 @@
-extends Area2D
+extends MovingObstacle
 
 func activate():
 	# Spikes go up
@@ -13,5 +13,3 @@ func activate():
 	$Tween.start()
 	# Play sound
 	$SpikeSFX.play()
-	# Enable collider
-	$CollisionShape2D.set_deferred("disabled", false)
