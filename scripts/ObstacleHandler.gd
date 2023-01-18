@@ -115,12 +115,12 @@ func place_obstacle(type, pos):
 			node = spikes.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos + 110, 60)
+			node.position += Vector2(pos + 125, 60)
 		1:
 			node = axe.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos + 50, 30)
+			node.position += Vector2(pos + 5, 10)
 		2:
 			node = enemy.instance()
 			add_child(node)

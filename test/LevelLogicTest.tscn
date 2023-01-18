@@ -37,9 +37,6 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -424, 24 )
 collision_mask = 15
-collision/safe_margin = 1.0
-gravity = 10
-jump_speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
