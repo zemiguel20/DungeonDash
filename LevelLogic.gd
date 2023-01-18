@@ -1,27 +1,21 @@
 extends Node
 
+signal level_finished
+signal player_died
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _player_hit(player):
+	player.die()
+	emit_signal("player_died")
 
+func _finish_line_reached(_body):
+	print("LEVEL FINISHED")
+	$Player.set_physics_process(false)
+	emit_signal("level_finished")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func restart():
+# warning-ignore:return_value_discarded
+	get_tree().reload_current_scene()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func _start_game():
-	$Guy.freeze = false
-	$UI.visible = false
-	print("Game Started")
-
-
-func _on_FinishLine_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body_rid == $Guy.get_rid():
-		$Guy.freeze = true
-		print("Game Ended")
+func quit():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://scenes/MainMenu.tscn")

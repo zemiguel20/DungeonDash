@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample"
+path="res://.import/cutting_rope_1.wav-b7089172def84d41c4318908aafcfb25.sample"
 
 [deps]
 
-source_file="res://assets/pressure-plate/pressure_plate_2.wav"
-dest_files=[ "res://.import/pressure_plate_2.wav-833cfcebae649ea35cdf6b8c0b12416b.sample" ]
+source_file="res://assets/sounds/cutting_rope_1.wav"
+dest_files=[ "res://.import/cutting_rope_1.wav-b7089172def84d41c4318908aafcfb25.sample" ]
 
 [params]
 

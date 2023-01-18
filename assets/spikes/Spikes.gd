@@ -1,23 +1,17 @@
-extends Node2D
+extends Area2D
 
-signal spikes_hit
-
-func _on_Trigger_body_entered(_body):
-	print("Player entered trigger")
-	# Spikes up Tween spikes offset
+func activate():
+	# Spikes go up
 	$Tween.interpolate_property(
-		$Spikes, 
-		"offset", 
+		$Sprite, 
+		"position", 
+		Vector2(0,48),
 		Vector2(0,0),
-		$DamageArea.position,
 		0.2,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT)
 	$Tween.start()
-	
+	# Play sound
 	$SpikeSFX.play()
-
-
-func _on_DamageArea_body_entered(_body):
-	print("Player hit spikes")
-	emit_signal("spikes_hit")
+	# Enable collider
+	$CollisionShape2D.set_deferred("disabled", false)
