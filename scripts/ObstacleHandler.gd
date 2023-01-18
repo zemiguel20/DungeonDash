@@ -44,7 +44,7 @@ func _ready():
 	# Load the three types of obstacles. TODO: fix paths
 	spikes = load("res://assets/spikes/Spikes.tscn")
 	axe = load("res://assets/axe/Axe.tscn")
-	enemy = load("res://assets/spikes/Spikes.tscn")
+	enemy = load("res://assets/enemy/Enemy.tscn")
 	
 	# Initialize player-dependent variables.
 	player = get_node("/root/Node2D/Guy")

@@ -1,13 +1,16 @@
 extends KinematicBody2D #TODO: change to MovingObstacle
 
-export var constant_linear_velocity: Vector2 = Vector2.ZERO
-
 func _ready():
 	$AnimatedSprite.flip_h = true
-	$AnimatedSprite.play("idle")
+	$AnimatedSprite.play("walk")
+	
+	var player_node = get_tree().get_root().find_node("Guy", true, false)
+	player_node.connect("enemy_hit", self, "die")
 
 func activate():
 	$EnemySFX.play()
+	$AnimatedSprite.play("walk")
 
-func _physics_process(delta):
-	move_and_collide(constant_linear_velocity * delta)
+func die():
+	$EnemySFX.play()
+	$AnimatedSprite.play("dead")
