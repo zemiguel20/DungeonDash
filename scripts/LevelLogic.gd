@@ -3,6 +3,8 @@ extends Node
 signal level_finished
 signal player_died
 
+# TODO: FinishLine might be changed to signal when song finished
+
 func _on_player_collision(other_body: CollisionObject2D):
 	if other_body.get_collision_layer_bit(1):
 		_player_died()
@@ -21,9 +23,8 @@ func _finish_line_reached():
 
 func _stop_all_movement():
 	# TODO: Might need to change how to reference the obstacle manager
-	for node in $Obstacles.get_children():
-		if node is MovingObstacle:
-			node.constant_linear_velocity = Vector2.ZERO
+	for node in $ObstacleHandler.obstacles:
+		node.constant_linear_velocity = Vector2.ZERO
 	$FinishLine.constant_linear_velocity = Vector2.ZERO
 
 func restart():

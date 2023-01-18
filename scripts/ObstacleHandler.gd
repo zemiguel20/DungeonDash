@@ -1,8 +1,7 @@
 extends Node2D
 
 # Level vars.
-var player
-var speed
+export var speed = 300
 var total_distance
 var inv_total_distance
 var distance = 0
@@ -46,9 +45,7 @@ func _ready():
 	axe = load("res://assets/axe/Axe.tscn")
 	enemy = load("res://assets/spikes/Spikes.tscn")
 	
-	# Initialize player-dependent variables.
-	player = get_node("/root/Node2D/Guy")
-	speed =  player.for_speed
+	# Initialize speed dependent variables.
 	total_distance = speed * 60
 	inv_total_distance = float(total_distance) / bpm
 	
@@ -109,7 +106,7 @@ func _process(delta):
 
 # Place an obstacle with a given type at a given position.
 func place_obstacle(type, pos):
-	var node
+	var node: MovingObstacle
 	
 	# TODO: change the positions to the final ground and place activation boxes
 	# (or something similar)
@@ -130,4 +127,5 @@ func place_obstacle(type, pos):
 			node.set_owner(scene)
 			node.position += Vector2(pos, 60)
 			
+	node.constant_linear_velocity.x = -speed
 	obstacles.append(node)
