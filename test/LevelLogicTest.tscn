@@ -14,6 +14,26 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="ObstacleHandler" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Axe" parent="ObstacleHandler" instance=ExtResource( 5 )]
+position = Vector2( 704, -8 )
+constant_linear_velocity = Vector2( -300, 0 )
+
+[node name="Timer" type="Timer" parent="ObstacleHandler/Axe"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Spikes" parent="ObstacleHandler" instance=ExtResource( 3 )]
+position = Vector2( 304, 40 )
+constant_linear_velocity = Vector2( -300, 0 )
+
+[node name="Timer" type="Timer" parent="ObstacleHandler/Spikes"]
+one_shot = true
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -424, 24 )
 
@@ -35,30 +55,10 @@ shape = SubResource( 1 )
 
 [node name="Menu" parent="." instance=ExtResource( 6 )]
 
-[node name="ObstacleHandler" type="Node2D" parent="."]
-script = ExtResource( 8 )
-
-[node name="Axe" parent="ObstacleHandler" instance=ExtResource( 5 )]
-position = Vector2( 704, -8 )
-constant_linear_velocity = Vector2( -300, 0 )
-
-[node name="Timer" type="Timer" parent="ObstacleHandler/Axe"]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[node name="Spikes" parent="ObstacleHandler" instance=ExtResource( 3 )]
-position = Vector2( 304, 40 )
-constant_linear_velocity = Vector2( -300, 0 )
-
-[node name="Timer" type="Timer" parent="ObstacleHandler/Spikes"]
-one_shot = true
-autostart = true
-
 [connection signal="level_finished" from="." to="Menu" method="enable"]
 [connection signal="player_died" from="." to="Menu" method="enable"]
+[connection signal="timeout" from="ObstacleHandler/Axe/Timer" to="ObstacleHandler/Axe" method="activate"]
+[connection signal="timeout" from="ObstacleHandler/Spikes/Timer" to="ObstacleHandler/Spikes" method="activate"]
 [connection signal="player_collided" from="Player" to="." method="_on_player_collision"]
 [connection signal="quit_pressed" from="Menu" to="." method="quit"]
 [connection signal="restart_pressed" from="Menu" to="." method="restart"]
-[connection signal="timeout" from="ObstacleHandler/Axe/Timer" to="ObstacleHandler/Axe" method="activate"]
-[connection signal="timeout" from="ObstacleHandler/Spikes/Timer" to="ObstacleHandler/Spikes" method="activate"]

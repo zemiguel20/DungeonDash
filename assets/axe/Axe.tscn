@@ -10,6 +10,7 @@ extents = Vector2( 56, 24 )
 
 [node name="Axe" type="KinematicBody2D"]
 collision_layer = 2
+collision_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": "If player (physics layer 1) enters Trigger, spikes sprite will animate going up, inside the DamageArea. If player enters DamageArea, send signal."

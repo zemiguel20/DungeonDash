@@ -10,17 +10,17 @@ enum State {
 	DEAD
 }
 
-# Start state Jump as he might spawn slightly airborne
-var current_state = State.JUMP
 
-# Export the speed, used in the obstacle placer
-export var for_speed = 300
+var current_state
+
 export var gravity = 1000
 export var jump_speed = 400
 var velocity = Vector2()
 
 func _ready():
-	velocity.x = for_speed
+	# Start state Jump as he might spawn slightly airborne
+	current_state = State.JUMP
+	$AnimatedSprite.play("jump")
 
 func _physics_process(delta):
 	match current_state:
@@ -51,7 +51,7 @@ func _physics_process(delta):
 			# move player to the floor using gravity if dead midair
 			if not is_on_floor():
 				velocity.y += gravity * delta
-				_move()
+			_move()
 
 func _move():
 	# TODO: clean movement code
@@ -88,7 +88,8 @@ func _set_state(new_state):
 			$AttackSFX.play()
 			$AttackHitbox/Hitbox.disabled = false
 		State.DEAD:
-			velocity = Vector2() # stop movement
+			velocity = Vector2() # stop jump
+			set_collision_mask_bit(1, false) #disable collision with obstacles
 			$AnimatedSprite.play("death")
 			$DeathSFX.play()
 
