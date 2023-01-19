@@ -1,8 +1,5 @@
 extends Node
 
-signal level_finished
-signal player_died
-
 # TODO: FinishLine might be changed to signal when song finished
 
 func _on_player_collision(other_body: CollisionObject2D):
@@ -15,14 +12,12 @@ func _player_died():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
 	$Player.die()
-	emit_signal("player_died")
 	$Timer.start()
 
 func _finish_line_reached():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
 	print("LEVEL FINISHED")
-	emit_signal("level_finished")
 	$CanvasLayer/GameOver.game_over(true, 0)
 
 func _stop_all_movement():
@@ -30,15 +25,6 @@ func _stop_all_movement():
 	for node in $ObstacleHandler.obstacles:
 		node.constant_linear_velocity = Vector2.ZERO
 	$FinishLine.constant_linear_velocity = Vector2.ZERO
-
-func restart():
-# warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
-
-func quit():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
-
 
 func _on_Timer_timeout():
 	var time = $ObstacleHandler/Song.get_playback_position()
