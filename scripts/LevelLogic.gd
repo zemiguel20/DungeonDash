@@ -13,14 +13,17 @@ func _on_player_collision(other_body: CollisionObject2D):
 
 func _player_died():
 	_stop_all_movement()
+	$CanvasLayer/Pause.disable_pausing()
 	$Player.die()
 	emit_signal("player_died")
 	$Timer.start()
 
 func _finish_line_reached():
 	_stop_all_movement()
+	$CanvasLayer/Pause.disable_pausing()
 	print("LEVEL FINISHED")
 	emit_signal("level_finished")
+	$CanvasLayer/GameOver.game_over(true, 0)
 
 func _stop_all_movement():
 	# TODO: Might need to change how to reference the obstacle manager

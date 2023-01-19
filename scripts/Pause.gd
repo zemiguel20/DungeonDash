@@ -1,8 +1,16 @@
 extends Control
 
+var pausing = true
+
+
+func disable_pausing():
+	pausing = false
+
+
 func _input(event):
-	if event.is_action_pressed("pause"):
-		_on_ReturnButton_pressed()
+	if (event.is_action_pressed("pause")):
+		if (pausing):
+			_on_ReturnButton_pressed()
 
 
 func _on_MenuButton_pressed():
