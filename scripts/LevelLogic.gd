@@ -23,7 +23,6 @@ func _stop_all_movement():
 	for node in $ObstacleHandler.obstacles:
 		node.constant_linear_velocity = Vector2.ZERO
 	$Environment.speed = 0
-	$FinishLine.constant_linear_velocity = Vector2.ZERO
 
 func _on_Timer_timeout():
 	var time = $ObstacleHandler/Song.get_playback_position()
