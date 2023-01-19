@@ -11,9 +11,7 @@ var background_size: Vector2
 func _ready():
 	ground_size = calculate_size($GroundCeiling)
 	background_size = calculate_size($Background)
-	print(ground_size)
-	print(background_size)
-	
+
 	ground_chunks = [$GroundCeiling, $GroundCeiling2]
 	background_chunks = [$Background, $Background2]
 
