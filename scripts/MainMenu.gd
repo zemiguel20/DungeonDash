@@ -3,7 +3,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartButton.grab_focus()
-	MusicController.play_menu_music()
+	GameController.play_menu_music()
 
 
 func _on_StartButton_pressed():
@@ -15,6 +15,7 @@ func _on_StartButton_pressed():
 # Delayed call from on_StartButton_pressed()
 func _on_StartTimer_timeout():
 	$StartButton.pressed = false
+	$StartButton/Label.margin_top -= 2
 	var _error = get_tree().change_scene("res://scenes/LevelSelector.tscn")
 
 
@@ -37,6 +38,7 @@ func _on_QuitButton_pressed():
 # Delayed call from on_QuitButton_pressed()
 func _on_QuitTimer_timeout():
 	$QuitButton.pressed = false
+	$QuitButton/Label.margin_top -= 2
 	get_tree().quit()
 
 

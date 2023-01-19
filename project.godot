@@ -36,7 +36,7 @@ default_bus_layout="res://smt_bus_layout.tres"
 
 [autoload]
 
-MusicController="*res://scenes/autoload/MusicController.tscn"
+GameController="*res://scenes/autoload/GameController.tscn"
 
 [display]
 
