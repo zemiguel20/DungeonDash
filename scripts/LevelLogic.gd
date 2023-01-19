@@ -25,6 +25,7 @@ func _stop_all_movement():
 	# TODO: Might need to change how to reference the obstacle manager
 	for node in $ObstacleHandler.obstacles:
 		node.constant_linear_velocity = Vector2.ZERO
+	$Environment.speed = 0
 	$FinishLine.constant_linear_velocity = Vector2.ZERO
 
 func restart():
