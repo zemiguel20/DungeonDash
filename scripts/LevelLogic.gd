@@ -5,16 +5,14 @@ extends Node
 func _on_player_collision(other_body: CollisionObject2D):
 	if other_body.get_collision_layer_bit(1):
 		_player_died()
-	elif other_body.get_collision_layer_bit(3):
-		_finish_line_reached()
 
 func _player_died():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
 	$Player.die()
-	$Timer.start()
+	$DeathTimer.start()
 
-func _finish_line_reached():
+func _level_finished():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
 	print("LEVEL FINISHED")
@@ -31,5 +29,5 @@ func _on_Timer_timeout():
 	var time = $ObstacleHandler/Song.get_playback_position()
 	time += AudioServer.get_time_since_last_mix() 
 	time -= AudioServer.get_output_latency()
-	time -= $Timer.wait_time
+	time -= $DeathTimer.wait_time
 	$CanvasLayer/GameOver.game_over(false, time)
