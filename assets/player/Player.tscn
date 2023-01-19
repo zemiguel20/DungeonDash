@@ -76,11 +76,12 @@ extents = Vector2( 36, 20 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 7
+collision/safe_margin = 1.0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 19 )
-animation = "attack"
+animation = "run"
 playing = true
 
 [node name="NormalCollisionShape" type="CollisionShape2D" parent="."]
