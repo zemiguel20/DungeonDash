@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_collided(other_body)
+
 enum State {
 	RUN,
 	JUMP,
@@ -8,19 +10,19 @@ enum State {
 	DEAD
 }
 
-# Start state Jump as he might spawn slightly airborne
-var current_state = State.JUMP
 
-# Export the speed, used in the obstacle placer
-export var for_speed = 300
-export var gravity = 1000
-export var jump_speed = 400
+var current_state
+
+export var gravity = 10
+export var jump_speed = 300
 var velocity = Vector2()
 
 func _ready():
-	velocity.x = for_speed
+	# Start state Jump as he might spawn slightly airborne
+	current_state = State.JUMP
+	$AnimatedSprite.play("jump")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		State.RUN:
 			# Check player action
@@ -36,7 +38,7 @@ func _physics_process(delta):
 			if is_on_floor():
 				_set_state(State.RUN)
 			else:
-				velocity.y += gravity * delta
+				velocity.y += gravity
 			_move()
 		State.SLIDE:
 			# keep sliding while action is pressed
@@ -48,11 +50,17 @@ func _physics_process(delta):
 		State.DEAD:
 			# move player to the floor using gravity if dead midair
 			if not is_on_floor():
-				velocity.y += gravity * delta
-				_move()
+				velocity.y += gravity
+			_move()
 
 func _move():
+	# TODO: clean movement code
+	velocity.x = 0
 	var _final_velocity = move_and_slide(velocity, Vector2.UP)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		emit_signal("player_collided", collision.collider)
+
 
 func _set_state(new_state):
 	# state cleanup
@@ -80,7 +88,8 @@ func _set_state(new_state):
 			$AttackSFX.play()
 			$AttackHitbox/Hitbox.disabled = false
 		State.DEAD:
-			velocity = Vector2() # stop movement
+			velocity = Vector2() # stop jump
+			set_collision_mask_bit(1, false) #disable collision with obstacles
 			$AnimatedSprite.play("death")
 			$DeathSFX.play()
 

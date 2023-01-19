@@ -1,4 +1,4 @@
-extends Node2D
+extends MovingObstacle
 
 func activate():
 	# swing axe
@@ -7,8 +7,13 @@ func activate():
 		"rotation_degrees", 
 		0,
 		180,
-		1,
-		Tween.TRANS_BACK)
+		0.2,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT)
 	$Tween.start()
 	$AxeSFX.play()
 	$CollisionShape2D.set_deferred("disabled", false)
+
+
+func _on_Tween_tween_completed(object, key):
+	$CollisionShape2D.set_deferred("disabled", true)

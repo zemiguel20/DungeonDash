@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/axe_wave.wav-f2f54d679f54bf46fe456caf81dfb605.sample"
+path="res://.import/axe_wave2.wav-8a27b21e4263f13a64568039a6d0d089.sample"
 
 [deps]
 
-source_file="res://assets/axe/axe_wave.wav"
-dest_files=[ "res://.import/axe_wave.wav-f2f54d679f54bf46fe456caf81dfb605.sample" ]
+source_file="res://assets/axe/axe_wave2.wav"
+dest_files=[ "res://.import/axe_wave2.wav-8a27b21e4263f13a64568039a6d0d089.sample" ]
 
 [params]
 
