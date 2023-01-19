@@ -15,6 +15,7 @@ func _player_died():
 	_stop_all_movement()
 	$Player.die()
 	emit_signal("player_died")
+	$Timer.start()
 
 func _finish_line_reached():
 	_stop_all_movement()
@@ -34,3 +35,11 @@ func restart():
 func quit():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_Timer_timeout():
+	var time = $ObstacleHandler/Song.get_playback_position()
+	time += AudioServer.get_time_since_last_mix() 
+	time -= AudioServer.get_output_latency()
+	time -= $Timer.wait_time
+	$CanvasLayer/GameOver.game_over(false, time)
