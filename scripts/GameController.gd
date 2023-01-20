@@ -2,12 +2,9 @@ extends Node
 
 
 var menu_music = load("res://assets/music/background_menu_1.wav")
-var death_count
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	death_count = 0
+var death_count = [0, 0, 0]
+var total_time = [0.0, 0.0, 0.0]
+var currLevel = 1
 
 
 func play_menu_music():
@@ -31,7 +28,21 @@ func _on_VideoPlayer_finished():
 
 
 func add_death_count():
-	death_count += 1
+	death_count[currLevel] += 1
 
 func get_death_count():
-	return death_count
+	return death_count[currLevel]
+
+
+func add_time(time : float):
+	total_time[currLevel] += time
+
+func get_time():
+	return total_time[currLevel]
+
+
+func set_level(level : int):
+	currLevel = level
+
+func get_level():
+	return currLevel

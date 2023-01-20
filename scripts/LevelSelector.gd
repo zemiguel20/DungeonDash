@@ -9,6 +9,7 @@ func _on_Level1_pressed():
 	$ClickAudio.play()
 	$Level1Timer.start()
 	GameController.stop_music()
+	GameController.set_level(1)
 
 # Delayed call from on_Level1_pressed()
 func _on_Level1Timer_timeout():
