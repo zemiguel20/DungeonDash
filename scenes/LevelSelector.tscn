@@ -25,9 +25,9 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Level1" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.3
+anchor_left = 0.2
 anchor_top = 0.3
-anchor_right = 0.45
+anchor_right = 0.35
 anchor_bottom = 0.55
 focus_neighbour_right = NodePath("../Level2")
 focus_neighbour_bottom = NodePath("../BackButton")
@@ -42,16 +42,17 @@ margin_top = 5.0
 margin_right = 35.5
 rect_rotation = -45.0
 custom_fonts/font = ExtResource( 5 )
-text = "Level 1"
+text = "Level A"
 align = 1
 valign = 1
 
 [node name="Level2" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.5
+anchor_left = 0.4
 anchor_top = 0.3
-anchor_right = 0.65
+anchor_right = 0.55
 anchor_bottom = 0.55
 focus_neighbour_left = NodePath("../Level1")
+focus_neighbour_right = NodePath("../Level3")
 focus_neighbour_bottom = NodePath("../BackButton")
 
 [node name="Label" type="Label" parent="Level2"]
@@ -64,7 +65,29 @@ margin_top = 5.0
 margin_right = 35.5
 rect_rotation = -45.0
 custom_fonts/font = ExtResource( 5 )
-text = "Level 2"
+text = "Level B"
+align = 1
+valign = 1
+
+[node name="Level3" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.6
+anchor_top = 0.3
+anchor_right = 0.75
+anchor_bottom = 0.55
+focus_neighbour_left = NodePath("../Level2")
+focus_neighbour_bottom = NodePath("../BackButton")
+
+[node name="Label" type="Label" parent="Level3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = 5.0
+margin_right = 35.5
+rect_rotation = -45.0
+custom_fonts/font = ExtResource( 5 )
+text = "Level C"
 align = 1
 valign = 1
 
@@ -79,6 +102,8 @@ margin_right = 85.0
 margin_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
 shortcut = SubResource( 3 )
 
 [node name="Label" type="Label" parent="BackButton"]
@@ -107,6 +132,9 @@ wait_time = 0.2
 [node name="Level2Timer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="Level3Timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [node name="BackTimer" type="Timer" parent="."]
 wait_time = 0.1
 
@@ -116,9 +144,13 @@ wait_time = 0.1
 [connection signal="focus_exited" from="Level2" to="." method="_on_Level_focus_exited" binds= [ 2 ]]
 [connection signal="mouse_entered" from="Level2" to="." method="_on_mouse_entered" binds= [ 2 ]]
 [connection signal="pressed" from="Level2" to="." method="_on_Level2_pressed"]
+[connection signal="focus_exited" from="Level3" to="." method="_on_Level_focus_exited" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Level3" to="." method="_on_mouse_entered" binds= [ 3 ]]
+[connection signal="pressed" from="Level3" to="." method="_on_Level3_pressed"]
 [connection signal="focus_exited" from="BackButton" to="." method="_on_Level_focus_exited" binds= [ 0 ]]
 [connection signal="mouse_entered" from="BackButton" to="." method="_on_mouse_entered" binds= [ 0 ]]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="timeout" from="Level1Timer" to="." method="_on_Level1Timer_timeout"]
 [connection signal="timeout" from="Level2Timer" to="." method="_on_Level2Timer_timeout"]
+[connection signal="timeout" from="Level3Timer" to="." method="_on_Level3Timer_timeout"]
 [connection signal="timeout" from="BackTimer" to="." method="_on_Timer_timeout"]
