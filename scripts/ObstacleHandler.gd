@@ -10,11 +10,11 @@ var time_elapsed = 0
 var potential_locs = []
 
 # Music vars.
-const bpm = 130
+const bpm = 135
 const time_sig = 4
 
 # Soundcue vars.
-const timing = 2
+var timing
 var soundcue_locs = []
 var soundcue_types = [] # 0 = click, 1 = cut, 2 = grunt
 var ctr = 0
@@ -53,23 +53,83 @@ func _ready():
 	for i in range(bpm + 1):
 		potential_locs.append(i * inv_total_distance)
 	
-	var type = 0
+	var level = GameController.get_level()
 	
-	# Choose some spots for sound cues. TODO: these are just for testing
-	for j in range(2, 120, 4):
-		if j + timing < len(potential_locs):
-			soundcue_locs.append(potential_locs[j])
-			soundcue_types.append(type)
-			obstacle_locs.append(potential_locs[j + timing])
-			
-			place_obstacle(type, potential_locs[j + timing])
-			
-			if type == 0:
-				type = 1
-			elif type == 1:
-				type = 2
-			else:
-				type = 0
+	# Place obstacles based on which level is loaded
+	if (level == 1):
+		timing = 4
+		place_cue_and_obstacle(0, 4)
+		place_cue_and_obstacle(0, 12)
+		place_cue_and_obstacle(1, 20)
+		place_cue_and_obstacle(2, 28)
+		place_cue_and_obstacle(1, 36)
+		place_cue_and_obstacle(1, 44)
+		place_cue_and_obstacle(0, 52)
+		place_cue_and_obstacle(2, 60)
+		place_cue_and_obstacle(0, 66)
+		place_cue_and_obstacle(0, 72)
+		place_cue_and_obstacle(1, 80)
+		place_cue_and_obstacle(1, 86)
+		place_cue_and_obstacle(2, 92)
+		place_cue_and_obstacle(0, 100)
+		place_cue_and_obstacle(1, 106)
+		place_cue_and_obstacle(1, 112)
+		place_cue_and_obstacle(2, 120)
+		place_cue_and_obstacle(2, 128)
+		
+	elif (level == 2):
+		timing = 2
+		place_cue_and_obstacle(0, 4)
+		place_cue_and_obstacle(1, 12)
+		place_cue_and_obstacle(0, 20)
+		place_cue_and_obstacle(2, 28)
+		place_cue_and_obstacle(0, 34)
+		place_cue_and_obstacle(0, 38)
+		place_cue_and_obstacle(1, 44)
+		place_cue_and_obstacle(2, 48)
+		place_cue_and_obstacle(1, 54)
+		place_cue_and_obstacle(2, 60)
+		place_cue_and_obstacle(1, 66)
+		place_cue_and_obstacle(1, 70)
+		place_cue_and_obstacle(0, 74)
+		place_cue_and_obstacle(2, 78)
+		place_cue_and_obstacle(0, 82)
+		place_cue_and_obstacle(0, 86)
+		place_cue_and_obstacle(1, 90)
+		place_cue_and_obstacle(2, 94)
+		place_cue_and_obstacle(0, 100)
+		place_cue_and_obstacle(1, 104)
+		place_cue_and_obstacle(2, 110)
+		place_cue_and_obstacle(1, 116)
+		place_cue_and_obstacle(0, 120)
+		place_cue_and_obstacle(0, 124)
+		place_cue_and_obstacle(0, 128)
+		
+	elif (level == 3):
+		timing = 1
+		place_cue_and_obstacle(0, 5)
+		place_cue_and_obstacle(2, 13)
+		place_cue_and_obstacle(1, 21)
+		place_cue_and_obstacle(2, 29)
+		place_cue_and_obstacle(1, 35)
+		place_cue_and_obstacle(0, 43)
+		place_cue_and_obstacle(0, 47)
+		place_cue_and_obstacle(2, 55)
+		place_cue_and_obstacle(2, 59)
+		place_cue_and_obstacle(0, 67)
+		place_cue_and_obstacle(0, 71)
+		place_cue_and_obstacle(1, 75)
+		place_cue_and_obstacle(1, 79)
+		place_cue_and_obstacle(2, 83)
+		place_cue_and_obstacle(2, 87)
+		place_cue_and_obstacle(0, 95)
+		place_cue_and_obstacle(1, 103)
+		place_cue_and_obstacle(0, 107)
+		place_cue_and_obstacle(2, 115)
+		place_cue_and_obstacle(2, 119)
+		place_cue_and_obstacle(1, 123)
+		place_cue_and_obstacle(0, 127)
+		place_cue_and_obstacle(1, 131)
 	
 	$Song.play()
 
@@ -83,7 +143,7 @@ func _process(_delta):
 	distance = time * speed
 	
 	# Play the correct sound if the player has reached a soundcue location.
-	if !obs_soon && distance > soundcue_locs[ctr] && ctr < len(soundcue_locs) - 1:
+	if ctr < len(soundcue_locs) && !obs_soon && distance > soundcue_locs[ctr]:
 		match (soundcue_types[ctr]):
 			0:
 				$SoundCueClick.play()
@@ -95,7 +155,7 @@ func _process(_delta):
 		# An obstacle is coming up.
 		obs_soon = true
 	
-	elif obs_soon && distance > obstacle_locs[ctr] &&  ctr < len(obstacle_locs) - 1:
+	elif ctr < len(obstacle_locs) && obs_soon && distance > obstacle_locs[ctr]:
 		# Play animation.
 		obstacles[ctr].activate()
 		
@@ -106,28 +166,40 @@ func _process(_delta):
 	# TODO: reset values if the player dies
 
 
-# Place an obstacle with a given type at a given position.
-func place_obstacle(type, pos):
+# Place a soundcue and an obstacle with a given type at a given beat in the song.
+func place_cue_and_obstacle(type, beat):	
+	soundcue_types.append(type)
+	
+	# Add small offset to location and soundcue list if obstacle is a saw: triggers animation later,
+	# which provides more leniency
+	if (type == 1):
+		soundcue_locs.append(potential_locs[beat] + 10)
+		obstacle_locs.append(potential_locs[beat + timing] + 50)
+	else:
+		soundcue_locs.append(potential_locs[beat])
+		obstacle_locs.append(potential_locs[beat + timing])
+	
+	var pos = potential_locs[beat + timing]
 	var node: MovingObstacle
 	
-	# TODO: change the positions to the final ground and place activation boxes
-	# (or something similar)
+	# Add the desired obstacle to the scene.
 	match (type):
 		0:
 			node = spikes.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos + 125, 60)
+			node.position += Vector2(pos + 130, 60)
 		1:
 			node = axe.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos + 5, 10)
+			node.position += Vector2(pos + 50, 10)
 		2:
 			node = enemy.instance()
 			add_child(node)
 			node.set_owner(scene)
-			node.position += Vector2(pos, 60)
-			
+			node.position += Vector2(pos + 100, 60)
+	
+	# Move the new obstacle to the left and append it to the list.
 	node.constant_linear_velocity.x = -speed
 	obstacles.append(node)
