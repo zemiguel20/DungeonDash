@@ -4,8 +4,9 @@
 [ext_resource path="res://assets/spikes/Spikes 4.png" type="Texture" id=2]
 [ext_resource path="res://assets/spikes/spikes_5.wav" type="AudioStream" id=3]
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 56, 24 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 19.0
+height = 60.0
 
 [node name="Spikes" type="KinematicBody2D"]
 collision_layer = 2
@@ -16,7 +17,8 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 48 )
