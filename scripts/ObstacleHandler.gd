@@ -53,7 +53,7 @@ func _ready():
 	for i in range(bpm + 1):
 		potential_locs.append(i * inv_total_distance)
 	
-	var level = 2
+	var level = 3
 	
 	# Place obstacles based on which level is loaded
 	if (level == 1):
@@ -107,6 +107,29 @@ func _ready():
 		
 	elif (level == 3):
 		timing = 1
+		place_cue_and_obstacle(0, 5)
+		place_cue_and_obstacle(2, 13)
+		place_cue_and_obstacle(1, 21)
+		place_cue_and_obstacle(2, 29)
+		place_cue_and_obstacle(1, 35)
+		place_cue_and_obstacle(0, 43)
+		place_cue_and_obstacle(0, 47)
+		place_cue_and_obstacle(2, 55)
+		place_cue_and_obstacle(2, 59)
+		place_cue_and_obstacle(0, 67)
+		place_cue_and_obstacle(0, 71)
+		place_cue_and_obstacle(1, 75)
+		place_cue_and_obstacle(1, 79)
+		place_cue_and_obstacle(2, 83)
+		place_cue_and_obstacle(2, 87)
+		place_cue_and_obstacle(0, 95)
+		place_cue_and_obstacle(1, 103)
+		place_cue_and_obstacle(0, 107)
+		place_cue_and_obstacle(2, 115)
+		place_cue_and_obstacle(2, 119)
+		place_cue_and_obstacle(1, 123)
+		place_cue_and_obstacle(0, 127)
+		place_cue_and_obstacle(1, 131)
 	
 	$Song.play()
 
