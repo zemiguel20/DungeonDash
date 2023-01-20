@@ -8,9 +8,18 @@ func _ready():
 	player_node.connect("enemy_hit", self, "die")
 
 func activate():
-	$EnemySFX.play()
-	$AnimatedSprite.play("walk")
+	pass
 
 func die():
-	$EnemyDeathSFX.play()
+	$CollisionShape2D.set_deferred("disabled", true)
 	$AnimatedSprite.play("dead")
+	
+	$EnemyDeathSFX.play()
+	
+	var timer = get_node("Timer")
+	timer.set_wait_time(1)
+	timer.start()
+	
+func _on_Timer_timeout():
+	$CollisionShape2D.set_deferred("disabled", false)
+	$AnimatedSprite.play("walk")
