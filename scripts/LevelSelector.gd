@@ -24,6 +24,15 @@ func _on_Level2Timer_timeout():
 	pass # Replace with function body.
 
 
+func _on_Level3_pressed():
+	$ClickAudio.play()
+	$Level3Timer.start()
+	
+# Delayed call from on_Level3_pressed()
+func _on_Level3Timer_timeout():
+	pass # Replace with function body.
+
+
 # Back Button
 func _on_BackButton_pressed():
 	$ClickAudio.play()
@@ -43,6 +52,8 @@ func _on_Level_focus_exited(prev : int):
 		$BackButton.focus_neighbour_top = $Level1.get_path()
 	elif (prev == 2):
 		$BackButton.focus_neighbour_top = $Level2.get_path()
+	elif (prev == 3):
+		$BackButton.focus_neighbour_top = $Level3.get_path()
 
 
 func _on_mouse_entered(curr : int):
@@ -50,5 +61,7 @@ func _on_mouse_entered(curr : int):
 		$Level1.grab_focus()
 	elif (curr == 2):
 		$Level2.grab_focus()
+	elif (curr == 3):
+		$Level3.grab_focus()
 	elif (curr == 0):
 		$BackButton.grab_focus()
