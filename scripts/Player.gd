@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal player_collided(other_body)
+
 signal player_died
 
 export var gravity = 10
@@ -34,7 +34,7 @@ func _on_attack_hit(body):
 
 
 func die():
-	set_state("dead")
+	_current_state.die()
 	emit_signal("player_died")
 
 
@@ -51,6 +51,8 @@ func set_state(state: String):
 		"attack":
 			_current_state = AttackState.new(self, $AnimatedSprite, $AttackSFX,
 											$AttackHitbox/Hitbox)
+		"dead":
+			_current_state = DeadState.new(self, $AnimatedSprite, $DeathSFX)
 		_:
 			print("Unknown state. Default to run.")
 			_current_state = RunState.new(self, $AnimatedSprite)

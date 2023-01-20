@@ -23,3 +23,7 @@ func process():
 		_player.set_state("run")
 	else:
 		_player.velocity.y += _player.gravity
+
+
+func die():
+	_player.set_state("dead")

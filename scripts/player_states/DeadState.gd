@@ -6,9 +6,13 @@ var _anim_sprite: AnimatedSprite
 var _death_sfx: AudioStreamPlayer
 
 
+func _init(player, anim_sprite, death_sfx).(player):
+	_anim_sprite = anim_sprite
+	_death_sfx = death_sfx
+
+
 func start():
 	_player.velocity = Vector2() # stop all momentum
-	_player.set_collision_mask_bit(1, false) # disable collision with obstacles
 	_anim_sprite.play("death")
 	_death_sfx.play()
 

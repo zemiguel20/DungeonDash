@@ -25,3 +25,7 @@ func end():
 	_anim_sprite.disconnect("animation_finished", self, "end")
 	_attack_hitbox.set_deferred("disabled", true)
 	_player.set_state("run")
+
+
+func die():
+	_player.set_state("dead")

@@ -23,3 +23,7 @@ func slide():
 
 func attack():
 	_player.set_state("attack")
+
+
+func die():
+	_player.set_state("dead")

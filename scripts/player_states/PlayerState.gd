@@ -25,3 +25,6 @@ func slide():
 
 func attack():
 	pass
+
+func die():
+	pass

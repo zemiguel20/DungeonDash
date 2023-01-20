@@ -40,3 +40,7 @@ func end():
 	_anim_timer.disconnect("timeout", self, "end")
 	
 	_player.set_state("run")
+
+
+func die():
+	_player.set_state("dead")
