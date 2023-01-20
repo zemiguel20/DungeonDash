@@ -53,7 +53,7 @@ func _ready():
 	for i in range(bpm + 1):
 		potential_locs.append(i * inv_total_distance)
 	
-	var level = 1
+	var level = 2
 	
 	# Place obstacles based on which level is loaded
 	if (level == 1):
@@ -79,6 +79,32 @@ func _ready():
 		
 	elif (level == 2):
 		timing = 2
+		place_cue_and_obstacle(0, 4)
+		place_cue_and_obstacle(1, 12)
+		place_cue_and_obstacle(0, 20)
+		place_cue_and_obstacle(2, 28)
+		place_cue_and_obstacle(0, 34)
+		place_cue_and_obstacle(0, 38)
+		place_cue_and_obstacle(1, 44)
+		place_cue_and_obstacle(2, 48)
+		place_cue_and_obstacle(1, 54)
+		place_cue_and_obstacle(2, 60)
+		place_cue_and_obstacle(1, 66)
+		place_cue_and_obstacle(1, 70)
+		place_cue_and_obstacle(0, 74)
+		place_cue_and_obstacle(2, 78)
+		place_cue_and_obstacle(0, 82)
+		place_cue_and_obstacle(0, 86)
+		place_cue_and_obstacle(1, 90)
+		place_cue_and_obstacle(2, 94)
+		place_cue_and_obstacle(0, 100)
+		place_cue_and_obstacle(1, 104)
+		place_cue_and_obstacle(2, 110)
+		place_cue_and_obstacle(1, 116)
+		place_cue_and_obstacle(0, 120)
+		place_cue_and_obstacle(0, 124)
+		place_cue_and_obstacle(0, 128)
+		
 	elif (level == 3):
 		timing = 1
 	
