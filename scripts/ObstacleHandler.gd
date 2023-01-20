@@ -53,7 +53,7 @@ func _ready():
 	for i in range(bpm + 1):
 		potential_locs.append(i * inv_total_distance)
 	
-	var level = 3
+	var level = GameController.get_level()
 	
 	# Place obstacles based on which level is loaded
 	if (level == 1):
