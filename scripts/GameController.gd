@@ -28,17 +28,17 @@ func _on_VideoPlayer_finished():
 
 
 func add_death_count():
-	death_count[currLevel] += 1
+	death_count[currLevel - 1] += 1
 
 func get_death_count():
-	return death_count[currLevel]
+	return death_count[currLevel - 1]
 
 
 func add_time(time : float):
-	total_time[currLevel] += time
+	total_time[currLevel - 1] += time
 
 func get_time():
-	return total_time[currLevel]
+	return total_time[currLevel - 1]
 
 
 func set_level(level : int):
