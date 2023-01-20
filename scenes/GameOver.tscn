@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ui/Button/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/fonts/button_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/GameOver.gd" type="Script" id=3]
+[ext_resource path="res://assets/sounds/menu/Click.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/menu/Focus.wav" type="AudioStream" id=5]
+
+[node name="GameOver" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+
+[node name="WinLossLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -100.0
+margin_top = -13.0
+margin_right = 100.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 2 )
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="RetryButton" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -85.0
+margin_top = -20.5
+margin_right = 85.0
+margin_bottom = 20.5
+
+[node name="Label" type="Label" parent="RetryButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = -15.0
+margin_right = 38.5
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 2 )
+text = "Retry"
+align = 1
+valign = 1
+
+[node name="MenuButton" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -85.0
+margin_top = -20.5
+margin_right = 85.0
+margin_bottom = 20.5
+
+[node name="Label" type="Label" parent="MenuButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.5
+margin_top = -15.0
+margin_right = 61.5
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 2 )
+text = "Main Menu"
+align = 1
+valign = 1
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SoundEffects"
+
+[node name="FocusAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SoundEffects"
+
+[node name="RetryTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MenuTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="DeathCounter" type="Label" parent="."]
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.1
+anchor_bottom = 0.15
+custom_fonts/font = ExtResource( 2 )
+text = "Deaths: 1"
+
+[node name="TimeDisplay" type="Label" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+
+[connection signal="focus_exited" from="RetryButton" to="." method="_on_Button_focus_exited"]
+[connection signal="mouse_entered" from="RetryButton" to="." method="_on_mouse_entered" binds= [ 1 ]]
+[connection signal="pressed" from="RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="focus_exited" from="MenuButton" to="." method="_on_Button_focus_exited"]
+[connection signal="mouse_entered" from="MenuButton" to="." method="_on_mouse_entered" binds= [ 2 ]]
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="timeout" from="RetryTimer" to="." method="_on_RetryTimer_timeout"]
+[connection signal="timeout" from="MenuTimer" to="." method="_on_MenuTimer_timeout"]
