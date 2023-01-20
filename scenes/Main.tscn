@@ -37,7 +37,7 @@ visible = false
 [node name="DeathTimer" type="Timer" parent="."]
 
 [connection signal="finished" from="ObstacleHandler/Song" to="." method="_level_finished"]
-[connection signal="player_collided" from="Player" to="." method="_on_player_collision"]
+[connection signal="player_died" from="Player" to="." method="_player_died"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_Timer_timeout"]
 
 [editable path="ObstacleHandler"]
