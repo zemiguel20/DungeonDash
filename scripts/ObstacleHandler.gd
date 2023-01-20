@@ -43,7 +43,7 @@ func _ready():
 	# Load the three types of obstacles. TODO: fix paths
 	spikes = load("res://assets/spikes/Spikes.tscn")
 	axe = load("res://assets/axe/Axe.tscn")
-	enemy = load("res://assets/spikes/Spikes.tscn")
+	enemy = load("res://assets/enemy/Enemy.tscn")
 	
 	# Initialize speed dependent variables.
 	total_distance = speed * 60
@@ -66,6 +66,8 @@ func _ready():
 			
 			if type == 0:
 				type = 1
+			elif type == 1:
+				type = 2
 			else:
 				type = 0
 	
