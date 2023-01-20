@@ -16,7 +16,7 @@ func _level_finished():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
 	print("LEVEL FINISHED")
-	$CanvasLayer/GameOver.game_over(true, 0)
+	_on_game_over(true)
 
 func _stop_all_movement():
 	# TODO: Might need to change how to reference the obstacle manager
@@ -24,9 +24,9 @@ func _stop_all_movement():
 		node.constant_linear_velocity = Vector2.ZERO
 	$Environment.speed = 0
 
-func _on_Timer_timeout():
+func _on_game_over(finished : bool):
 	var time = $ObstacleHandler/Song.get_playback_position()
 	time += AudioServer.get_time_since_last_mix() 
 	time -= AudioServer.get_output_latency()
 	time -= $DeathTimer.wait_time
-	$CanvasLayer/GameOver.game_over(false, time)
+	$CanvasLayer/GameOver.game_over(finished, time)
