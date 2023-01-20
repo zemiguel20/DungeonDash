@@ -4,13 +4,13 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func game_over(won : bool, time : float):
 	get_tree().paused = true
-	GameController.add_death_count()
-	GameController.add_time(time)
-	$DeathCounter.text = "Deaths: %s" % GameController.get_death_count()
 	if (won):
 		$WinLossLabel.text = "Level Complete!"
 	else:
-		$TimeDisplay.text = "Time: %.1f" % GameController.get_time()
+		GameController.add_death_count()
+	GameController.add_time(time)
+	$DeathCounter.text = "Deaths: %s" % GameController.get_death_count()
+	$TimeDisplay.text = "Time: %.1f" % GameController.get_time()
 	visible = true
 	$RetryButton.grab_focus()
 
