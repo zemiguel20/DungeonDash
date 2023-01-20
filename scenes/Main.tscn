@@ -38,6 +38,6 @@ visible = false
 
 [connection signal="finished" from="ObstacleHandler/Song" to="." method="_level_finished"]
 [connection signal="player_died" from="Player" to="." method="_player_died"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_game_over" binds= [ false ]]
 
 [editable path="ObstacleHandler"]
