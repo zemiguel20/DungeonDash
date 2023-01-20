@@ -74,7 +74,7 @@ func _ready():
 	$Song.play()
 
 
-func _process(delta):
+func _process(_delta):
 	# Compensate for audio playing delays.
 	var time = $Song.get_playback_position() + AudioServer.get_time_since_last_mix()
 	time -= AudioServer.get_output_latency() + offset

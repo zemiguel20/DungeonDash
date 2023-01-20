@@ -22,6 +22,7 @@ func _stop_all_movement():
 	# TODO: Might need to change how to reference the obstacle manager
 	for node in $ObstacleHandler.obstacles:
 		node.constant_linear_velocity = Vector2.ZERO
+	$Environment.speed = 0
 
 func _on_Timer_timeout():
 	var time = $ObstacleHandler/Song.get_playback_position()

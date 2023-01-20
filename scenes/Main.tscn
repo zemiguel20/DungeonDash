@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://test/test-tools/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/environment/Environment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ObstacleHandler.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelLogic.gd" type="Script" id=6]
@@ -12,6 +12,10 @@ script = ExtResource( 6 )
 
 [node name="ObstacleHandler" parent="." instance=ExtResource( 5 )]
 process_priority = -100
+z_index = 1
+
+[node name="Environment" parent="." instance=ExtResource( 2 )]
+position = Vector2( -262, 85 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -19,12 +23,9 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -100, 0 )
+z_index = 3
 
 [node name="PlayerAction" type="AudioStreamPlayer2D" parent="Player"]
-
-[node name="Ground" parent="." instance=ExtResource( 2 )]
-position = Vector2( 384, 117 )
-scale = Vector2( 200, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
