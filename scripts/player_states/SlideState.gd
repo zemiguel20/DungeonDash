@@ -43,4 +43,5 @@ func end():
 
 
 func die():
+	end() # cancel action and end state right away
 	_player.set_state("dead")
