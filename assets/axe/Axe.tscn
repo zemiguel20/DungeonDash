@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24, 24 )
 
-[node name="Axe" type="KinematicBody2D"]
+[node name="Axe" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
@@ -45,4 +45,5 @@ texture = ExtResource( 1 )
 stream = ExtResource( 3 )
 bus = "SoundEffects"
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
