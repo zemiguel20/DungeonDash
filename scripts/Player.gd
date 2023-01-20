@@ -118,7 +118,6 @@ func _on_attack_anim_finished():
 	_set_state(State.RUN)
 
 func _on_AttackHitbox_body_entered(body):
-	print("hit")
 	if body.has_method("take_damage"):
 		body.take_damage()
 		

@@ -14,7 +14,7 @@ func die():
 	$CollisionShape2D.set_deferred("disabled", true)
 	$AnimatedSprite.play("dead")
 	
-	$EnemyDeathSFX.play()
+	$EnemyDeathSFX.play() #TODO: better death SFX
 	
 	var timer = get_node("Timer")
 	timer.set_wait_time(1)
