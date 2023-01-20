@@ -22,10 +22,8 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -100, 0 )
+position = Vector2( -90, 49 )
 z_index = 3
-
-[node name="PlayerAction" type="AudioStreamPlayer2D" parent="Player"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
