@@ -25,6 +25,7 @@ stream = ExtResource( 3 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -10.0
 bus = "Music"
 
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
