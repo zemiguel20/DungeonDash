@@ -6,7 +6,7 @@ func activate():
 		$Sprite, 
 		"position", 
 		Vector2(0,48),
-		Vector2(0,0),
+		Vector2(0,-10),
 		0.2,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT)
