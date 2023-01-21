@@ -4,7 +4,7 @@ func _ready():
 	$AnimatedSprite.play("idle")
 
 func activate():
-	pass
+	$EnemySFX.play()
 
 func die():
 	$CollisionShape2D.set_deferred("disabled", true)
