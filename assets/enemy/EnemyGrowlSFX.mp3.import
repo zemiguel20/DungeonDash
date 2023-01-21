@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EnemyGrowlSFX.mp3-d3aa0d62878d1af2c1f8ee9bd9a2bfa4.mp3str"
+
+[deps]
+
+source_file="res://assets/enemy/EnemyGrowlSFX.mp3"
+dest_files=[ "res://.import/EnemyGrowlSFX.mp3-d3aa0d62878d1af2c1f8ee9bd9a2bfa4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

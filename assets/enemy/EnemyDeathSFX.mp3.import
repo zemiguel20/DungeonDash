@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EnemyDeathSFX.mp3-ea0fac7a28b829a4da1476c9f0c22666.mp3str"
+
+[deps]
+
+source_file="res://assets/enemy/EnemyDeathSFX.mp3"
+dest_files=[ "res://.import/EnemyDeathSFX.mp3-ea0fac7a28b829a4da1476c9f0c22666.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
