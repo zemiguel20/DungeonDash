@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BlastProcessingShort.mp3-abc4f4be7df5b5f81c012241522be0d6.mp3str"
+
+[deps]
+
+source_file="res://assets/music/BlastProcessingShort.mp3"
+dest_files=[ "res://.import/BlastProcessingShort.mp3-abc4f4be7df5b5f81c012241522be0d6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

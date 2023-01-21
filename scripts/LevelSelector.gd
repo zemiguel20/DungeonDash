@@ -9,6 +9,7 @@ func _on_Level1_pressed():
 	$ClickAudio.play()
 	$Level1Timer.start()
 	GameController.stop_music()
+	GameController.set_level(1)
 
 # Delayed call from on_Level1_pressed()
 func _on_Level1Timer_timeout():
@@ -18,19 +19,23 @@ func _on_Level1Timer_timeout():
 func _on_Level2_pressed():
 	$ClickAudio.play()
 	$Level2Timer.start()
+	GameController.stop_music()
+	GameController.set_level(2)
 
 # Delayed call from on_Level2_pressed()
 func _on_Level2Timer_timeout():
-	pass # Replace with function body.
+	var _error = get_tree().change_scene("res://scenes/Main.tscn")
 
 
 func _on_Level3_pressed():
 	$ClickAudio.play()
 	$Level3Timer.start()
+	GameController.stop_music()
+	GameController.set_level(3)
 	
 # Delayed call from on_Level3_pressed()
 func _on_Level3Timer_timeout():
-	pass # Replace with function body.
+	var _error = get_tree().change_scene("res://scenes/Main.tscn")
 
 
 # Back Button
