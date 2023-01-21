@@ -9,18 +9,23 @@ var velocity = Vector2()
 
 var _current_state: PlayerState
 
+var timer = Timer.new()
+var cooldown = false
 
 func _ready():
 	set_state("run")
 
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("player_jump"):
+	if Input.is_action_pressed("player_jump") and !cooldown:
 		_current_state.jump()
-	elif Input.is_action_pressed("player_slide"):
+		start_cooldown()
+	elif Input.is_action_pressed("player_slide") and !cooldown:
 		_current_state.slide()
-	elif Input.is_action_pressed("player_shoot"):
+		start_cooldown()
+	elif Input.is_action_pressed("player_shoot") and !cooldown:
 		_current_state.attack()
+		start_cooldown()
 	
 	var _final_velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -58,3 +63,17 @@ func set_state(state: String):
 			_current_state = RunState.new(self, $AnimatedSprite)
 		
 	_current_state.start()
+
+
+func start_cooldown():
+	cooldown = true
+	
+	add_child(timer)
+	timer.connect("timeout", self, "stop_cooldown")
+	timer.one_shot = true
+	timer.wait_time = 1.5
+	timer.start()
+	
+func stop_cooldown():
+	print("stop")
+	cooldown = false
