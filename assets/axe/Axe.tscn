@@ -25,7 +25,7 @@ disabled = true
 position = Vector2( 0, -160 )
 
 [node name="Handle" type="Sprite" parent="AxePivot"]
-position = Vector2( 64, 0 )
+position = Vector2( 64, -10 )
 rotation = 1.5708
 scale = Vector2( 0.685838, 0.503845 )
 texture = ExtResource( 5 )
@@ -34,7 +34,7 @@ __meta__ = {
 }
 
 [node name="Blade" type="Sprite" parent="AxePivot"]
-position = Vector2( 152, 0 )
+position = Vector2( 152, -10 )
 rotation = -1.57079
 scale = Vector2( 0.342919, 0.251922 )
 texture = ExtResource( 1 )
