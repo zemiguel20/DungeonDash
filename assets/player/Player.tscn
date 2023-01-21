@@ -105,6 +105,7 @@ bus = "SoundEffects"
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 29 )
+volume_db = -10.0
 bus = "SoundEffects"
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="."]

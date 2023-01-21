@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/enemy/animations/enemy44_4.png" type="Texture" id=7]
 [ext_resource path="res://assets/enemy/animations/enemy44_7.png" type="Texture" id=8]
 [ext_resource path="res://assets/enemy/animations/enemy44_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/enemy/enemy_3.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/enemy/EnemyGrowlSFX_2.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/enemy/temp_dead.png" type="Texture" id=11]
 [ext_resource path="res://assets/enemy/EnemyDeathSFX.mp3" type="AudioStream" id=12]
 
@@ -53,6 +53,7 @@ flip_h = true
 
 [node name="EnemySFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+volume_db = -5.0
 
 [node name="EnemyDeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
