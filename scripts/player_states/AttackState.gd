@@ -6,7 +6,6 @@ var _anim_sprite: AnimatedSprite
 var _attack_sfx: AudioStreamPlayer
 var _attack_hitbox: CollisionShape2D
 
-
 func _init(player, anim_sprite, attack_sfx, attack_hitbox).(player):
 	_anim_sprite = anim_sprite
 	_attack_sfx = attack_sfx
@@ -23,7 +22,7 @@ func start():
 	
 func end():
 	_anim_sprite.disconnect("animation_finished", self, "end")
-	_attack_hitbox.set_deferred("disabled", true)
+	#_attack_hitbox.set_deferred("disabled", true)
 	_player.set_state("run")
 
 

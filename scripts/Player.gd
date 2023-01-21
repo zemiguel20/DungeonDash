@@ -9,12 +9,13 @@ var velocity = Vector2()
 
 var _current_state: PlayerState
 
-var timer = Timer.new()
+var timer_hitbox = Timer.new()
+var timer_cd = Timer.new()
 var cooldown = false
 
 func _ready():
 	set_state("run")
-
+	initialize_timers()
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("player_jump") and !cooldown:
@@ -26,6 +27,7 @@ func _physics_process(_delta):
 	elif Input.is_action_pressed("player_shoot") and !cooldown:
 		_current_state.attack()
 		start_cooldown()
+		timer_hitbox.start()
 	
 	var _final_velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -64,16 +66,23 @@ func set_state(state: String):
 		
 	_current_state.start()
 
+func initialize_timers():
+	add_child(timer_cd)
+	timer_cd.connect("timeout", self, "stop_cooldown")
+	timer_cd.one_shot = true
+	timer_cd.wait_time = 1.5
+	
+	add_child(timer_hitbox)
+	timer_hitbox.connect("timeout", self, "disable_hitbox")
+	timer_hitbox.one_shot = true
+	timer_hitbox.wait_time = 0.25
 
 func start_cooldown():
 	cooldown = true
-	
-	add_child(timer)
-	timer.connect("timeout", self, "stop_cooldown")
-	timer.one_shot = true
-	timer.wait_time = 1.5
-	timer.start()
+	timer_cd.start()
 	
 func stop_cooldown():
-	print("stop")
 	cooldown = false
+	
+func disable_hitbox():
+	$AttackHitbox/Hitbox.set_deferred("disabled", true)
