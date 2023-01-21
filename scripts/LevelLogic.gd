@@ -1,15 +1,9 @@
 extends Node
 
-# TODO: FinishLine might be changed to signal when song finished
-
-func _on_player_collision(other_body: CollisionObject2D):
-	if other_body.get_collision_layer_bit(1):
-		_player_died()
 
 func _player_died():
 	_stop_all_movement()
 	$CanvasLayer/Pause.disable_pausing()
-	$Player.die()
 	$DeathTimer.start()
 
 func _level_finished():

@@ -11,5 +11,5 @@ func activate():
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT)
 	$Tween.start()
-	# Play sound
 	$SpikeSFX.play()
+	$CollisionShape2D.set_deferred("disabled", false)

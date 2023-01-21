@@ -9,19 +9,55 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PlayerState",
+"class": "AttackState",
+"language": "GDScript",
+"path": "res://scripts/player_states/AttackState.gd"
+}, {
+"base": "PlayerState",
+"class": "DeadState",
+"language": "GDScript",
+"path": "res://scripts/player_states/DeadState.gd"
+}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
-"base": "KinematicBody2D",
+"base": "PlayerState",
+"class": "JumpState",
+"language": "GDScript",
+"path": "res://scripts/player_states/JumpState.gd"
+}, {
+"base": "Area2D",
 "class": "MovingObstacle",
 "language": "GDScript",
 "path": "res://scripts/obstacles/MovingObstacle.gd"
+}, {
+"base": "Object",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://scripts/player_states/PlayerState.gd"
+}, {
+"base": "PlayerState",
+"class": "RunState",
+"language": "GDScript",
+"path": "res://scripts/player_states/RunState.gd"
+}, {
+"base": "PlayerState",
+"class": "SlideState",
+"language": "GDScript",
+"path": "res://scripts/player_states/SlideState.gd"
 } ]
 _global_script_class_icons={
+"AttackState": "",
+"DeadState": "",
 "GitAPI": "",
-"MovingObstacle": ""
+"JumpState": "",
+"MovingObstacle": "",
+"PlayerState": "",
+"RunState": "",
+"SlideState": ""
 }
 
 [application]

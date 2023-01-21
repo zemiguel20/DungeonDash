@@ -8,7 +8,7 @@
 radius = 19.0
 height = 60.0
 
-[node name="Spikes" type="KinematicBody2D"]
+[node name="Spikes" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 1 )
@@ -19,6 +19,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 48 )
@@ -29,3 +30,5 @@ texture = ExtResource( 2 )
 [node name="SpikeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "SoundEffects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
