@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SMT_Project"
+config/name="DungeonDash"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 

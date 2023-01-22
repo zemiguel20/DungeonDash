@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, -120 )
 
 [node name="Background2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1800, -120 )
+position = Vector2( 6000, -120 )
 
 [node name="GroundCeiling" parent="." instance=ExtResource( 1 )]
 
